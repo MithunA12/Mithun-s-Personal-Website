@@ -4,6 +4,7 @@ import { CoreValues } from "@/components/sections/CoreValues";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StaggeredReveal } from "@/components/ui/StaggeredReveal";
 import { experiences } from "@/src/data/profile";
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function ValuesPage() {
       <CoreValues />
       <Section>
         <SectionHeader eyebrow="Values in practice" title="Principles reflected in the work." />
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <StaggeredReveal className="mt-10 grid gap-4 md:grid-cols-3">
           {experiences.slice(0, 3).map((experience) => (
             <article className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6" key={experience.title}>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">{experience.category}</p>
@@ -30,7 +31,7 @@ export default function ValuesPage() {
               <p className="mt-3 leading-7 text-[var(--muted)]">{experience.summary}</p>
             </article>
           ))}
-        </div>
+        </StaggeredReveal>
       </Section>
     </PageShell>
   );

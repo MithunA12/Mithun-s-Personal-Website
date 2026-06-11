@@ -1,8 +1,8 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Card } from "@/components/ui/Card";
-import { MotionReveal } from "@/components/ui/MotionReveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StaggeredReveal } from "@/components/ui/StaggeredReveal";
 import { accomplishments, coreValues, projects, research } from "@/src/data/profile";
 
 const highlights = [
@@ -52,9 +52,9 @@ export function HomeHighlights() {
         </ButtonLink>
       </div>
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {highlights.map((item, index) => (
-          <MotionReveal delay={index * 0.06} key={item.href}>
+      <StaggeredReveal className="mt-10 grid gap-5 md:grid-cols-2">
+        {highlights.map((item) => (
+          <div className="h-full" key={item.href}>
             <Card className="flex h-full flex-col" polished>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                 {item.eyebrow}
@@ -68,9 +68,9 @@ export function HomeHighlights() {
                 {item.cta}
               </a>
             </Card>
-          </MotionReveal>
+          </div>
         ))}
-      </div>
+      </StaggeredReveal>
     </Section>
   );
 }

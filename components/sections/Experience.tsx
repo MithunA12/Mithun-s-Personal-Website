@@ -1,22 +1,18 @@
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StaggeredReveal } from "@/components/ui/StaggeredReveal";
+import { StickyStorySection } from "@/components/ui/StickyStorySection";
 import { experiences } from "@/src/data/profile";
 
 export function Experience() {
   return (
-    <Section id="experience">
-      <SectionHeader
-        description="Roles that show technical execution, founder initiative, and clear communication across different settings."
-        eyebrow="Experience"
-        title="Research, building, and leadership in practice."
-      />
-
-      <ol className="mt-10 border-t border-[var(--border)]">
+    <StickyStorySection
+      id="experience"
+      description="Roles that show technical execution, founder initiative, and clear communication across different settings."
+      eyebrow="Experience"
+      title="Research, building, and leadership in practice."
+    >
+      <StaggeredReveal as="ol" className="border-t border-[var(--border)]">
         {experiences.map((experience) => (
-          <li
-            className="grid gap-3 border-b border-[var(--border)] py-6 transition-colors duration-200 hover:bg-[var(--row-hover)] sm:grid-cols-[0.8fr_1fr_1.6fr] sm:gap-6 sm:px-4"
-            key={`${experience.organization}-${experience.title}`}
-          >
+          <div className="grid gap-3 border-b border-[var(--border)] py-7 transition-colors duration-200 hover:bg-[var(--row-hover)] sm:gap-5 sm:px-4" key={`${experience.organization}-${experience.title}`}>
             <div>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                 {experience.category}
@@ -31,9 +27,9 @@ export function Experience() {
             <p className="leading-7 text-[var(--muted)]">
               {experience.summary}
             </p>
-          </li>
+          </div>
         ))}
-      </ol>
-    </Section>
+      </StaggeredReveal>
+    </StickyStorySection>
   );
 }

@@ -24,7 +24,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
       : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <div className="mt-10">
+    <div>
       <div
         aria-label="Filter projects by category"
         className="flex flex-wrap gap-2"

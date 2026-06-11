@@ -1,5 +1,7 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MotionReveal } from "@/components/ui/MotionReveal";
+import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
+import { StaggeredReveal } from "@/components/ui/StaggeredReveal";
 import { Tag } from "@/components/ui/Tag";
 import { NeuralSignalVisual } from "@/components/visuals/NeuralSignalVisual";
 import {
@@ -49,9 +51,12 @@ const credibilitySignals = [
 
 export function Hero() {
   return (
-    <section className="border-b border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)]">
+    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)]">
+      <ParallaxLayer className="pointer-events-none absolute inset-x-0 -top-24 h-[120%]" distance={38}>
+        <div aria-hidden="true" className="page-grid h-full opacity-35" />
+      </ParallaxLayer>
       <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:px-12 lg:py-28">
-        <MotionReveal>
+        <MotionReveal className="relative">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-sm">
             {hero.eyebrow}
           </p>
@@ -82,7 +87,7 @@ export function Hero() {
           </div>
         </MotionReveal>
 
-        <MotionReveal delay={0.08}>
+        <ParallaxLayer className="relative" distance={22}>
           <aside
             aria-labelledby="credibility-heading"
             className="border-t border-[var(--border)] pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
@@ -94,7 +99,10 @@ export function Hero() {
             >
               Selected proof
             </p>
-            <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1">
+            <StaggeredReveal
+              as="dl"
+              className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1"
+            >
               {credibilitySignals.map((signal) => (
                 <div
                   className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_var(--shadow-color)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--hover-border)] hover:shadow-[0_14px_36px_-26px_var(--shadow-color)] sm:p-5"
@@ -106,9 +114,9 @@ export function Hero() {
                   <dd className="mt-2 font-medium leading-6">{signal.value}</dd>
                 </div>
               ))}
-            </dl>
+            </StaggeredReveal>
           </aside>
-        </MotionReveal>
+        </ParallaxLayer>
       </div>
     </section>
   );
