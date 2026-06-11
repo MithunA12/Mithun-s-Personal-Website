@@ -55,7 +55,7 @@ export function Hero() {
       <ParallaxLayer className="pointer-events-none absolute inset-x-0 -top-24 h-[120%]" distance={38}>
         <div aria-hidden="true" className="page-grid h-full opacity-35" />
       </ParallaxLayer>
-      <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:px-12 lg:py-28">
+      <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:items-start lg:px-12 lg:py-20">
         <MotionReveal className="relative">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-sm">
             {hero.eyebrow}
