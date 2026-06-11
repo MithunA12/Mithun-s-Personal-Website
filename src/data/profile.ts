@@ -7,6 +7,7 @@ export interface Profile {
 
 export interface HeroContent {
   eyebrow: string;
+  headline: string;
   description: string;
   focusAreas: string[];
   primaryCta: {
@@ -64,7 +65,8 @@ export interface ContactLink {
 
 export const profile: Profile = {
   name: "Mithun Arun",
-  role: "AI/CS researcher and product builder",
+  role:
+    "AI/CS researcher, product builder, startup-oriented founder, and student leader",
   shortBio:
     "AI/CS researcher, software builder, and student leader focused on intelligent systems for healthcare, education, and decision-making.",
   bio: [
@@ -74,12 +76,14 @@ export const profile: Profile = {
 };
 
 export const hero: HeroContent = {
-  eyebrow: "AI/CS researcher & product builder",
+  eyebrow: "AI/CS researcher · Product builder · Founder · Student leader",
+  headline:
+    "Building intelligent systems and turning technical research into useful products.",
   description:
     "I build intelligent systems for healthcare, learning, and human decision-making through machine learning, software engineering, signal processing, and product design.",
   focusAreas: ["AI/ML", "Software Engineering", "Research", "Product"],
   primaryCta: {
-    label: "Explore projects",
+    label: "View projects",
     href: "#projects",
   },
   secondaryCta: {
