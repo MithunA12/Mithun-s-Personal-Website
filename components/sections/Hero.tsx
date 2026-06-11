@@ -28,7 +28,7 @@ const credibilitySignals = [
     value: featuredResearch?.publicationStatus,
   },
   {
-    label: "Product",
+    label: "Projects",
     value: founderProject
       ? `${founderProject.title} · ${founderProject.role}`
       : undefined,

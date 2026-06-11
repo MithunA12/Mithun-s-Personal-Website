@@ -48,13 +48,13 @@ export interface ResearchItem {
 
 export interface Accomplishment {
   title: string;
-  category: "Research" | "Award" | "Product" | "Leadership";
+  category: "Research" | "Award" | "Project" | "Leadership";
 }
 
 export interface Experience {
   title: string;
   organization: string;
-  category: "Research" | "Product" | "Leadership" | "Communication";
+  category: "Research" | "Project" | "Leadership" | "Communication";
   summary: string;
 }
 
@@ -84,10 +84,10 @@ export const profile: Profile = {
 export const hero: HeroContent = {
   eyebrow: "AI/CS researcher · Product builder · Founder · Student leader",
   headline:
-    "Building intelligent systems and turning technical research into useful products.",
+    "Building intelligent systems and turning technical research into useful tools.",
   description:
     "I build intelligent systems for healthcare, learning, and human decision-making through machine learning, software engineering, signal processing, and product design.",
-  focusAreas: ["AI/ML", "Software Engineering", "Research", "Product"],
+  focusAreas: ["AI/ML", "Software Engineering", "Research", "Project"],
   primaryCta: {
     label: "View projects",
     href: "#projects",
@@ -177,7 +177,7 @@ export const experiences: Experience[] = [
   {
     title: "Founder and mobile app developer",
     organization: "Worldview",
-    category: "Product",
+    category: "Project",
     summary:
       "Built a mobile social product using React Native, Expo, and Firebase.",
   },
