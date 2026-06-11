@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navigation, profile } from "@/src/data/profile";
 
 export function SiteHeader() {
@@ -12,7 +11,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--surface-translucent)] backdrop-blur-xl">
-      <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto grid min-h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 sm:px-8 lg:px-12">
         <Link
           className="font-mono text-sm font-bold tracking-[-0.02em] text-[var(--foreground)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
           href="/"
@@ -41,8 +40,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
+        <div className="justify-self-end">
           <button
             aria-expanded={menuOpen}
             aria-label="Toggle navigation menu"

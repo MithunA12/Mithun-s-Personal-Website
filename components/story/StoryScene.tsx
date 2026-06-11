@@ -35,7 +35,7 @@ export function StoryScene({
 
   return (
     <section
-      className="relative min-h-[90vh] scroll-mt-20 border-b border-white/10 lg:min-h-[120vh]"
+      className="relative min-h-[90vh] scroll-mt-20 lg:min-h-[120vh]"
       id={id}
       ref={ref}
     >

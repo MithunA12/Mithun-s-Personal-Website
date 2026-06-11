@@ -5,22 +5,6 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { profile } from "@/src/data/profile";
 import "./globals.css";
 
-const themeScript = `
-  (() => {
-    try {
-      const storedTheme = localStorage.getItem("portfolio-theme");
-      const theme = storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-
-      document.documentElement.classList.toggle("dark", theme === "dark");
-      document.documentElement.dataset.theme = theme;
-    } catch {}
-  })();
-`;
-
 export const metadata: Metadata = {
   applicationName: `${profile.name} Portfolio`,
   authors: [{ name: profile.name }],
@@ -72,14 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full">
         <a className="skip-link" href="#main-content">
           Skip to main content
