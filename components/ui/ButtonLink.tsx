@@ -9,9 +9,9 @@ interface ButtonLinkProps {
 
 const variantClasses = {
   primary:
-    "border-transparent bg-[var(--accent)] text-white shadow-[0_8px_24px_-12px_rgba(29,78,216,0.85)] hover:bg-[var(--accent-strong)]",
+    "border-transparent bg-[var(--accent-fill)] text-white shadow-[0_8px_24px_-12px_var(--shadow-color)] hover:bg-[var(--accent-fill-hover)]",
   secondary:
-    "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:border-slate-300 hover:bg-[var(--surface-subtle)]",
+    "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-[0_1px_2px_var(--shadow-color)] hover:border-[var(--hover-border)] hover:bg-[var(--surface-subtle)]",
 };
 
 export function ButtonLink({

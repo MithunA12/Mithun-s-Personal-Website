@@ -49,7 +49,7 @@ const credibilitySignals = [
 
 export function Hero() {
   return (
-    <section className="border-b border-[var(--border)] bg-[var(--surface)]">
+    <section className="border-b border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)]">
       <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:px-12 lg:py-28">
         <MotionReveal>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-sm">
@@ -97,7 +97,7 @@ export function Hero() {
             <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1">
               {credibilitySignals.map((signal) => (
                 <div
-                  className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_rgba(15,23,42,0.4)] transition-[border-color,box-shadow] duration-200 hover:border-blue-300 hover:shadow-[0_14px_36px_-26px_rgba(15,23,42,0.5)] sm:p-5"
+                  className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_var(--shadow-color)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--hover-border)] hover:shadow-[0_14px_36px_-26px_var(--shadow-color)] sm:p-5"
                   key={signal.label}
                 >
                   <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">

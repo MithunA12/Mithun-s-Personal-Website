@@ -36,8 +36,8 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
               aria-pressed={isActive}
               className={`min-h-11 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--accent)] ${
                 isActive
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-white shadow-[0_8px_22px_-14px_rgba(29,78,216,0.85)]"
-                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-blue-300 hover:bg-[var(--surface-subtle)]"
+                  ? "border-[var(--accent-fill)] bg-[var(--accent-fill)] text-white shadow-[0_8px_22px_-14px_var(--shadow-color)]"
+                  : "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--hover-border)] hover:bg-[var(--surface-subtle)]"
               }`}
               key={category}
               onClick={() => setActiveCategory(category)}

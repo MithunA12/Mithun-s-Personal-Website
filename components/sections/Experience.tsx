@@ -14,7 +14,7 @@ export function Experience() {
       <ol className="mt-10 border-t border-[var(--border)]">
         {experiences.map((experience) => (
           <li
-            className="grid gap-3 border-b border-[var(--border)] py-6 transition-colors duration-200 hover:bg-white/60 sm:grid-cols-[0.8fr_1fr_1.6fr] sm:gap-6 sm:px-4"
+            className="grid gap-3 border-b border-[var(--border)] py-6 transition-colors duration-200 hover:bg-[var(--row-hover)] sm:grid-cols-[0.8fr_1fr_1.6fr] sm:gap-6 sm:px-4"
             key={`${experience.organization}-${experience.title}`}
           >
             <div>
