@@ -12,6 +12,61 @@ export const runtime = "nodejs";
 const MAX_MESSAGE_LENGTH = 1_000;
 const MAX_HISTORY_ITEMS = 8;
 const MAX_HISTORY_ITEM_LENGTH = 1_000;
+const MAX_REQUEST_BYTES = 16_384;
+const RATE_LIMIT_MAX_REQUESTS = 10;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_ENTRIES = 1_000;
+
+type RateLimitEntry = {
+  count: number;
+  resetAt: number;
+};
+
+const rateLimitStore = new Map<string, RateLimitEntry>();
+
+function pruneRateLimitStore(now: number) {
+  if (rateLimitStore.size < RATE_LIMIT_MAX_ENTRIES) return;
+
+  for (const [identifier, entry] of rateLimitStore) {
+    if (entry.resetAt <= now) rateLimitStore.delete(identifier);
+  }
+
+  if (rateLimitStore.size >= RATE_LIMIT_MAX_ENTRIES) {
+    const oldestIdentifier = rateLimitStore.keys().next().value;
+    if (oldestIdentifier) rateLimitStore.delete(oldestIdentifier);
+  }
+}
+
+function getClientIdentifier(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const forwardedIp = forwardedFor?.split(",")[0]?.trim();
+
+  return forwardedIp || request.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+function checkRateLimit(identifier: string) {
+  const now = Date.now();
+  const existing = rateLimitStore.get(identifier);
+
+  if (!existing || existing.resetAt <= now) {
+    pruneRateLimitStore(now);
+    rateLimitStore.set(identifier, {
+      count: 1,
+      resetAt: now + RATE_LIMIT_WINDOW_MS,
+    });
+    return { allowed: true, retryAfterSeconds: 0 };
+  }
+
+  if (existing.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return {
+      allowed: false,
+      retryAfterSeconds: Math.max(1, Math.ceil((existing.resetAt - now) / 1_000)),
+    };
+  }
+
+  existing.count += 1;
+  return { allowed: true, retryAfterSeconds: 0 };
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -49,6 +104,25 @@ function parseHistory(value: unknown): ChatMessage[] | null {
 }
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length") || "0");
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return NextResponse.json(
+      { error: "The chat request is too large." },
+      { status: 413 },
+    );
+  }
+
+  const rateLimit = checkRateLimit(getClientIdentifier(request));
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { error: "Too many questions were sent. Please wait a moment and try again." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+      },
+    );
+  }
+
   let body: unknown;
 
   try {

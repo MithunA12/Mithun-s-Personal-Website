@@ -1,3 +1,5 @@
+import "server-only";
+
 import { generateWithGemini } from "./gemini";
 import type { GenerateAnswerInput } from "./types";
 import { LlmProviderError } from "./types";

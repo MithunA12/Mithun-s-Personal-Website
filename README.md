@@ -58,9 +58,15 @@ Environment variables:
 - `GEMINI_API_KEY`: Required to enable chatbot responses.
 - `GEMINI_MODEL`: Optional. Defaults to `gemini-2.5-flash`.
 
-Gemini offers a free tier subject to Google&apos;s current model availability and
+Gemini offers a free tier subject to Google's current model availability and
 rate limits. Review the current limits before deployment, and never commit a
 real API key.
+
+The chat route validates message and history sizes, rejects oversized request
+bodies, and applies a dependency-free per-IP limit of 10 requests per minute.
+This in-memory limit is best-effort on serverless platforms because each
+function instance has separate, temporary memory. A hosted rate-limit store is
+the appropriate follow-up if sustained abuse becomes a concern.
 
 ## Validation
 
