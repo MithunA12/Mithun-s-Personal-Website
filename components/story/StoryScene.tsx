@@ -28,19 +28,19 @@ export function StoryScene({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.18, 0.82, 1], [0, 1, 1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.22, 0.78, 1], [48, 0, 0, -40]);
-  const visualY = useTransform(scrollYProgress, [0, 1], [44, -44]);
-  const visualScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.96, 1, 0.97]);
+  const opacity = useTransform(scrollYProgress, [0, 0.12, 1], [0, 1, 1]);
+  const textY = useTransform(scrollYProgress, [0, 0.16, 1], [36, 0, 0]);
+  const visualY = useTransform(scrollYProgress, [0, 1], [24, -24]);
+  const visualScale = useTransform(scrollYProgress, [0, 0.4, 1], [0.98, 1, 1]);
 
   return (
     <section
-      className="relative min-h-[90vh] scroll-mt-20 lg:min-h-[120vh]"
+      className="relative min-h-[100svh] scroll-mt-20 lg:min-h-screen"
       id={id}
       ref={ref}
     >
       <motion.div
-        className="mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-6 py-16 sm:px-8 lg:sticky lg:top-16 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-12 lg:py-12"
+        className="mx-auto grid min-h-[100svh] max-w-7xl items-center gap-8 px-6 py-12 sm:px-8 sm:py-14 lg:sticky lg:top-16 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:px-12 lg:py-10"
         style={reduceMotion ? undefined : { opacity }}
       >
         <motion.div style={reduceMotion ? undefined : { y: textY }}>
