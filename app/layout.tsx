@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { profile } from "@/src/data/profile";
 import "./globals.css";
 
@@ -82,8 +84,10 @@ export default function RootLayout({
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
-        <ThemeToggle />
+        <ScrollProgress />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

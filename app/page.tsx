@@ -1,23 +1,16 @@
 import { About } from "@/components/sections/About";
-import { Accomplishments } from "@/components/sections/Accomplishments";
-import { Contact } from "@/components/sections/Contact";
-import { CoreValues } from "@/components/sections/CoreValues";
-import { Experience } from "@/components/sections/Experience";
-import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { Hero } from "@/components/sections/Hero";
-import { Research } from "@/components/sections/Research";
+import { HomeHighlights } from "@/components/sections/HomeHighlights";
+import { LandingContact } from "@/components/sections/LandingContact";
+import { PageShell } from "@/components/layout/PageShell";
 
 export default function Home() {
   return (
-    <main id="main-content" tabIndex={-1}>
+    <PageShell>
       <Hero />
       <About />
-      <FeaturedProjects />
-      <Research />
-      <Accomplishments />
-      <Experience />
-      <CoreValues />
-      <Contact />
-    </main>
+      <HomeHighlights />
+      <LandingContact />
+    </PageShell>
   );
 }

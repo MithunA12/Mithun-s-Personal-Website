@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import type { Project } from "@/src/data/profile";
@@ -11,6 +12,7 @@ interface ProjectFilterProps {
 const allProjectsLabel = "All";
 
 export function ProjectFilter({ projects }: ProjectFilterProps) {
+  const reduceMotion = useReducedMotion();
   const categories = [
     allProjectsLabel,
     ...Array.from(new Set(projects.map((project) => project.category))),
@@ -54,11 +56,22 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
         {visibleProjects.length === 1 ? "" : "s"}.
       </p>
 
-      <div className="mt-6 grid gap-5 md:grid-cols-2">
-        {visibleProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
+      <motion.div className="mt-6 grid gap-5 md:grid-cols-2" layout={!reduceMotion}>
+        <AnimatePresence initial={false} mode="popLayout">
+          {visibleProjects.map((project, index) => (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              key={project.slug}
+              layout={!reduceMotion}
+              transition={{ delay: reduceMotion ? 0 : index * 0.04, duration: reduceMotion ? 0 : 0.28 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

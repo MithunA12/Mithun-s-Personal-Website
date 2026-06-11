@@ -69,6 +69,11 @@ export interface ContactLink {
   verificationStatus: "verified" | "needs-verification";
 }
 
+export interface NavigationItem {
+  label: string;
+  href: string;
+}
+
 export const profile: Profile = {
   name: "Mithun Arun",
   role:
@@ -90,13 +95,22 @@ export const hero: HeroContent = {
   focusAreas: ["AI/ML", "Software Engineering", "Research", "Project"],
   primaryCta: {
     label: "View projects",
-    href: "#projects",
+    href: "/projects",
   },
   secondaryCta: {
     label: "View research",
-    href: "#research",
+    href: "/research",
   },
 };
+
+export const navigation: NavigationItem[] = [
+  { label: "Projects", href: "/projects" },
+  { label: "Research", href: "/research" },
+  { label: "Experience", href: "/experience" },
+  { label: "Accomplishments", href: "/accomplishments" },
+  { label: "Values", href: "/values" },
+  { label: "Contact", href: "/contact" },
+];
 
 export const projects: Project[] = [
   {

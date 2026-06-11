@@ -65,6 +65,14 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
+.page-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 52%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 52%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
 a,
 button {
   -webkit-tap-highlight-color: transparent;
