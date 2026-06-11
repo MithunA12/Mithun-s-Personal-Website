@@ -1,20 +1,4 @@
-const values = [
-  {
-    title: "Build with purpose",
-    description:
-      "Start with meaningful problems and turn ideas into useful, testable products.",
-  },
-  {
-    title: "Work with rigor",
-    description:
-      "Treat evidence, uncertainty, and technical tradeoffs with care.",
-  },
-  {
-    title: "Communicate clearly",
-    description:
-      "Make complex systems understandable to technical and nontechnical audiences.",
-  },
-];
+import { coreValues } from "@/src/data/profile";
 
 export function CoreValues() {
   return (
@@ -27,7 +11,7 @@ export function CoreValues() {
           Principles behind the work.
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-3">
-          {values.map((value, index) => (
+          {coreValues.map((value, index) => (
             <article key={value.title}>
               <p className="font-mono text-sm text-[var(--accent)]">
                 0{index + 1}

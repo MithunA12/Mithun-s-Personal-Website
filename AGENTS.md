@@ -118,7 +118,6 @@ Relevant proof points:
 - Worldview app
 - Web apps and dashboards
 - Firebase/Flask/React/Next.js work
-- Security assessment agent
 - Hackathon/product leadership
 
 ### AI/ML Recruiters

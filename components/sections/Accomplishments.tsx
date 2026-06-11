@@ -1,11 +1,4 @@
-const accomplishments = [
-  "Published AI healthcare research",
-  "Regeneron ISEF Finalist",
-  "Rise Global Winner",
-  "Congressional App Challenge Winner",
-  "Hackathon and student organization leadership",
-  "Debate and Model UN leadership",
-];
+import { accomplishments } from "@/src/data/profile";
 
 export function Accomplishments() {
   return (
@@ -21,9 +14,9 @@ export function Accomplishments() {
           {accomplishments.map((accomplishment) => (
             <li
               className="rounded-lg border border-white/15 bg-white/5 p-5 leading-6"
-              key={accomplishment}
+              key={accomplishment.title}
             >
-              {accomplishment}
+              {accomplishment.title}
             </li>
           ))}
         </ul>

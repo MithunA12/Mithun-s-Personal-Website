@@ -1,23 +1,6 @@
-const projects = [
-  {
-    title: "Worldview",
-    description:
-      "A mobile social product built with React Native, Expo, and Firebase.",
-    category: "Mobile product",
-  },
-  {
-    title: "NeuroHero Web App",
-    description:
-      "A research-to-product interface for working with EEG and ECG model inputs.",
-    category: "AI healthcare",
-  },
-  {
-    title: "Security Assessment Agent",
-    description:
-      "An AI-assisted workflow for mapping vendor evidence to security requirements.",
-    category: "AI systems",
-  },
-];
+import { projects } from "@/src/data/profile";
+
+const featuredProjects = projects.filter((project) => project.featured);
 
 export function FeaturedProjects() {
   return (
@@ -33,7 +16,7 @@ export function FeaturedProjects() {
           Products and technical systems built for real-world problems.
         </h2>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {projects.map((project) => (
+          {featuredProjects.map((project) => (
             <article
               className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-6"
               key={project.title}

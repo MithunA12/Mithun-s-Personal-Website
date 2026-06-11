@@ -95,7 +95,7 @@ The homepage should tell this story in order:
    AI/CS researcher, product builder, and student founder.
 
 2. **What he builds**  
-   AI healthcare systems, mobile apps, research tools, security agents, and student-focused products.
+   AI healthcare systems, mobile apps, research tools, and student-focused products.
 
 3. **Why it matters**  
    He works on tools that improve decision-making, make complex systems understandable, and turn research into real-world products.
@@ -150,7 +150,6 @@ A visible proof strip near the top of the homepage should include:
 /projects/worldview
 /projects/neurohero-web-app
 /projects/eeg-burst-detection
-/projects/security-assessment-agent
 /projects/job-search-product
 /writing
 /writing/[slug]
@@ -259,12 +258,8 @@ Featured projects:
    - WFDB/EEG data processing
    - Burst detection from single EEG files
 
-4. **Security Assessment Agent**
-   - AI agent for reviewing vendor security documentation
-   - Maps evidence to organizational security requirements
-   - Shows interest in AI agents and governance workflows
 
-5. **Student Job Search Product**
+4. **Student Job Search Product**
    - Resume matching
    - Skills gap analysis
    - Networking support

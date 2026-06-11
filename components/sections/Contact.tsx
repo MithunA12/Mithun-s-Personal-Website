@@ -1,4 +1,10 @@
+import { contactLinks } from "@/src/data/profile";
+
 export function Contact() {
+  const verifiedContactLinks = contactLinks.filter(
+    (link) => link.verificationStatus === "verified" && link.href,
+  );
+
   return (
     <section
       id="contact"
@@ -13,8 +19,9 @@ export function Contact() {
             Interested in research, engineering, or product collaboration?
           </h2>
           <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">
-            Verified contact and professional profile links will be added in a
-            future content task.
+            {verifiedContactLinks.length > 0
+              ? "Connect through the verified links below."
+              : "Verified contact and professional profile links will be added in a future content task."}
           </p>
         </div>
         <a

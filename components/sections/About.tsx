@@ -1,3 +1,5 @@
+import { profile } from "@/src/data/profile";
+
 export function About() {
   return (
     <section id="about" className="scroll-mt-8 px-6 py-20 sm:px-8 lg:px-12">
@@ -11,16 +13,9 @@ export function About() {
           </h2>
         </div>
         <div className="space-y-5 text-lg leading-8 text-[var(--muted)]">
-          <p>
-            I am an AI/CS researcher, software builder, and student leader
-            focused on applying intelligent systems to healthcare, education,
-            and decision-making.
-          </p>
-          <p>
-            My work spans AI healthcare research using EEG and ECG data,
-            mobile application development, hackathon leadership, and
-            product-focused technical projects.
-          </p>
+          {profile.bio.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </div>
     </section>
