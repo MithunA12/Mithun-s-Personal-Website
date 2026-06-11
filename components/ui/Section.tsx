@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MotionReveal } from "@/components/ui/MotionReveal";
 
 type SectionTone = "default" | "surface" | "dark" | "accent";
 
@@ -27,7 +28,7 @@ export function Section({
       className={`scroll-mt-8 border-b border-[var(--border)] px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24 ${toneClasses[tone]} ${className}`}
       id={id}
     >
-      <div className="mx-auto max-w-6xl">{children}</div>
+      <MotionReveal className="mx-auto max-w-6xl">{children}</MotionReveal>
     </section>
   );
 }

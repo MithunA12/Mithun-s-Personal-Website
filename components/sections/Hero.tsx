@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { MotionReveal } from "@/components/ui/MotionReveal";
 import { Tag } from "@/components/ui/Tag";
 import {
   accomplishments,
@@ -49,7 +50,7 @@ export function Hero() {
   return (
     <section className="border-b border-[var(--border)] bg-[var(--surface)]">
       <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:px-12 lg:py-28">
-        <div>
+        <MotionReveal>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-sm">
             {hero.eyebrow}
           </p>
@@ -78,32 +79,34 @@ export function Hero() {
               {hero.secondaryCta.label}
             </ButtonLink>
           </div>
-        </div>
+        </MotionReveal>
 
-        <aside
-          aria-labelledby="credibility-heading"
-          className="border-t border-[var(--border)] pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
-        >
-          <p
-            id="credibility-heading"
-            className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]"
+        <MotionReveal delay={0.08}>
+          <aside
+            aria-labelledby="credibility-heading"
+            className="border-t border-[var(--border)] pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
           >
-            Selected proof
-          </p>
-          <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1">
-            {credibilitySignals.map((signal) => (
-              <div
-                className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_rgba(15,23,42,0.4)] sm:p-5"
-                key={signal.label}
-              >
-                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-                  {signal.label}
-                </dt>
-                <dd className="mt-2 font-medium leading-6">{signal.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </aside>
+            <p
+              id="credibility-heading"
+              className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]"
+            >
+              Selected proof
+            </p>
+            <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1">
+              {credibilitySignals.map((signal) => (
+                <div
+                  className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_rgba(15,23,42,0.4)] transition-[border-color,box-shadow] duration-200 hover:border-blue-300 hover:shadow-[0_14px_36px_-26px_rgba(15,23,42,0.5)] sm:p-5"
+                  key={signal.label}
+                >
+                  <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+                    {signal.label}
+                  </dt>
+                  <dd className="mt-2 font-medium leading-6">{signal.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </MotionReveal>
       </div>
     </section>
   );
