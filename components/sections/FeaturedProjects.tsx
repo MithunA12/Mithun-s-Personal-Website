@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ProjectFilter } from "@/components/projects/ProjectFilter";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { projects } from "@/src/data/profile";
@@ -12,11 +12,7 @@ export function FeaturedProjects() {
         eyebrow="Featured projects"
         title="Products and technical systems built for real-world problems."
       />
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {featuredProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
+      <ProjectFilter projects={featuredProjects} />
     </Section>
   );
 }
