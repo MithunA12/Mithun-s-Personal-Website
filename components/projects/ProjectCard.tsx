@@ -1,3 +1,5 @@
+import { Card } from "@/components/ui/Card";
+import { Tag } from "@/components/ui/Tag";
 import type { Project } from "@/src/data/profile";
 
 interface ProjectCardProps {
@@ -6,7 +8,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--background)] p-6 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-[0_18px_45px_-28px_rgba(15,23,42,0.45)] focus-within:border-[var(--accent)] focus-within:shadow-[0_18px_45px_-28px_rgba(15,23,42,0.45)] sm:p-7">
+    <Card className="group flex h-full flex-col" polished>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
           {project.category}
@@ -21,14 +23,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.description}
       </p>
 
-      <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.title} technologies`}>
+      <ul
+        className="mt-6 flex flex-wrap gap-2"
+        aria-label={`${project.title} technologies`}
+      >
         {project.stack.map((technology) => (
-          <li
-            className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs font-medium"
-            key={technology}
-          >
+          <Tag as="li" key={technology}>
             {technology}
-          </li>
+          </Tag>
         ))}
       </ul>
 
@@ -54,6 +56,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       ) : null}
-    </article>
+    </Card>
   );
 }

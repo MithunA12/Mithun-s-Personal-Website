@@ -1,3 +1,6 @@
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { contactLinks } from "@/src/data/profile";
 
 export function Contact() {
@@ -6,31 +9,21 @@ export function Contact() {
   );
 
   return (
-    <section
-      id="contact"
-      className="border-t border-[var(--border)] bg-[var(--surface)] px-6 py-20 sm:px-8 lg:px-12"
-    >
-      <div className="mx-auto flex max-w-6xl flex-col gap-7 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="font-mono text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-            Contact
-          </p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Interested in research, engineering, or product collaboration?
-          </h2>
-          <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">
-            {verifiedContactLinks.length > 0
+    <Section id="contact" tone="accent">
+      <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <SectionHeader
+          description={
+            verifiedContactLinks.length > 0
               ? "Connect through the verified links below."
-              : "Verified contact and professional profile links will be added in a future content task."}
-          </p>
-        </div>
-        <a
-          className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-md border border-[var(--border)] px-6 py-3 font-semibold transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-          href="#about"
-        >
+              : "Verified contact and professional profile links will be added in a future content task."
+          }
+          eyebrow="Contact"
+          title="Interested in research, engineering, or product collaboration?"
+        />
+        <ButtonLink className="shrink-0" href="#about" variant="secondary">
           Learn more
-        </a>
+        </ButtonLink>
       </div>
-    </section>
+    </Section>
   );
 }

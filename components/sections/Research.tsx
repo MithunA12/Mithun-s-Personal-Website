@@ -1,28 +1,21 @@
+import { Card } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Tag } from "@/components/ui/Tag";
 import { research } from "@/src/data/profile";
 
 export function Research() {
   return (
-    <section id="research" className="scroll-mt-8 px-6 py-20 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <p className="font-mono text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-            Research
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Applying machine learning to complex healthcare data.
-          </h2>
-          <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">
-            Work across signal processing, clinical data analysis, model
-            evaluation, and scientific communication.
-          </p>
-        </div>
+    <Section id="research">
+      <SectionHeader
+        description="Work across signal processing, clinical data analysis, model evaluation, and scientific communication."
+        eyebrow="Research"
+        title="Applying machine learning to complex healthcare data."
+      />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          {research.map((item) => (
-            <article
-              className="flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-7"
-              key={item.slug}
-            >
+      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        {research.map((item) => (
+          <Card className="flex h-full flex-col" key={item.slug}>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {item.field}
@@ -47,14 +40,11 @@ export function Research() {
                   className="mt-3 flex flex-wrap gap-2"
                   aria-label={`${item.title} methods`}
                 >
-                  {item.methods.map((method) => (
-                    <li
-                      className="rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-xs font-medium"
-                      key={method}
-                    >
-                      {method}
-                    </li>
-                  ))}
+                {item.methods.map((method) => (
+                  <Tag as="li" key={method}>
+                    {method}
+                  </Tag>
+                ))}
                 </ul>
               </div>
 
@@ -64,10 +54,9 @@ export function Research() {
                 </p>
                 <p className="mt-2 leading-6">{item.significance}</p>
               </div>
-            </article>
-          ))}
-        </div>
+          </Card>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

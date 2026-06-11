@@ -1,3 +1,5 @@
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { Tag } from "@/components/ui/Tag";
 import {
   accomplishments,
   experiences,
@@ -64,28 +66,17 @@ export function Hero() {
 
           <div className="mt-7 flex flex-wrap gap-2.5" aria-label="Focus areas">
             {hero.focusAreas.map((area) => (
-              <span
-                className="rounded-full border border-[var(--border)] bg-[var(--background)] px-3.5 py-2 text-sm font-medium"
-                key={area}
-              >
-                {area}
-              </span>
+              <Tag key={area}>{area}</Tag>
             ))}
           </div>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              className="inline-flex min-h-12 items-center justify-center rounded-md bg-[var(--accent)] px-6 py-3 font-semibold text-white transition-colors hover:bg-[var(--accent-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-              href={hero.primaryCta.href}
-            >
+            <ButtonLink href={hero.primaryCta.href}>
               {hero.primaryCta.label}
-            </a>
-            <a
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--surface)] px-6 py-3 font-semibold transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-              href={hero.secondaryCta.href}
-            >
+            </ButtonLink>
+            <ButtonLink href={hero.secondaryCta.href} variant="secondary">
               {hero.secondaryCta.label}
-            </a>
+            </ButtonLink>
           </div>
         </div>
 
@@ -102,7 +93,7 @@ export function Hero() {
           <dl className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-1">
             {credibilitySignals.map((signal) => (
               <div
-                className="rounded-lg border border-[var(--border)] bg-[var(--background)] p-4 sm:p-5"
+                className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_rgba(15,23,42,0.4)] sm:p-5"
                 key={signal.label}
               >
                 <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
