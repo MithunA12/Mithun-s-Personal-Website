@@ -60,9 +60,6 @@ export function NeuralSignalVisual() {
             <stop offset="0.45" stopColor="#38bdf8" />
             <stop offset="1" stopColor="#1d4ed8" />
           </radialGradient>
-          <clipPath id="signal-clip">
-            <rect height="150" width="176" x="12" y="34" />
-          </clipPath>
         </defs>
 
         <g stroke="#334155" strokeOpacity="0.55" strokeWidth="1">
@@ -85,6 +82,7 @@ export function NeuralSignalVisual() {
         <path
           className="signal-wave"
           d="M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111"
+          pathLength="1"
           stroke="url(#signal-gradient)"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -108,7 +106,6 @@ export function NeuralSignalVisual() {
               <circle cx={288 + (index % 3) * 6} cy={vector.y + 3.5} fill="#67e8f9" opacity="0.7" r="2" />
             </g>
           ))}
-          <path d="M184 111 C194 111 198 106 204 106" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="1.25" />
           <path d="M313 106 C328 106 338 105 352 105" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="1.25" />
           <text fill="#64748b" fontFamily="monospace" fontSize="8" x="222" y="54">FEATURE VECTOR</text>
         </g>
@@ -139,18 +136,6 @@ export function NeuralSignalVisual() {
             <circle cx={node.cx} cy={node.cy} fill="url(#node-gradient)" r="4.5" />
           </g>
         ))}
-
-        <g clipPath="url(#signal-clip)">
-          <rect
-            className="signal-scan"
-            fill="url(#signal-gradient)"
-            height="150"
-            opacity="0.12"
-            width="36"
-            x="-36"
-            y="34"
-          />
-        </g>
 
         <g fill="#94a3b8" fontFamily="monospace" fontSize="9" letterSpacing="1.1">
           <text x="18" y="202">EEG / ECG</text>

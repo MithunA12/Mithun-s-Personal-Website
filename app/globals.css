@@ -120,12 +120,8 @@ button {
 
 .signal-wave {
   animation: signal-draw 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  stroke-dasharray: 230;
-  stroke-dashoffset: 230;
-}
-
-.signal-scan {
-  animation: signal-scan 3.2s linear infinite;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
 }
 
 .feature-vector {
@@ -144,7 +140,7 @@ button {
 @keyframes signal-draw {
   0% {
     opacity: 0;
-    stroke-dashoffset: 230;
+    stroke-dashoffset: 1;
   }
   8% {
     opacity: 1;
@@ -157,25 +153,6 @@ button {
   100% {
     opacity: 0;
     stroke-dashoffset: 0;
-  }
-}
-
-@keyframes signal-scan {
-  0% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  8% {
-    opacity: 0.12;
-  }
-  82% {
-    opacity: 0.12;
-    transform: translateX(224px);
-  }
-  94%,
-  100% {
-    opacity: 0;
-    transform: translateX(224px);
   }
 }
 
