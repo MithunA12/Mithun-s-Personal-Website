@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MotionReveal } from "@/components/ui/MotionReveal";
 import { Tag } from "@/components/ui/Tag";
+import { NeuralSignalVisual } from "@/components/visuals/NeuralSignalVisual";
 import {
   accomplishments,
   experiences,
@@ -86,9 +87,10 @@ export function Hero() {
             aria-labelledby="credibility-heading"
             className="border-t border-[var(--border)] pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
           >
+            <NeuralSignalVisual />
             <p
               id="credibility-heading"
-              className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]"
+              className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]"
             >
               Selected proof
             </p>

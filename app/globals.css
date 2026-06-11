@@ -47,6 +47,52 @@ button {
   color: #172033;
 }
 
+.signal-wave {
+  animation: signal-draw 3.6s ease-in-out infinite alternate;
+  stroke-dasharray: 410;
+  stroke-dashoffset: 410;
+}
+
+.signal-scan {
+  animation: signal-scan 4.8s linear infinite;
+}
+
+.signal-node-halo,
+.signal-status-dot {
+  animation: signal-pulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes signal-draw {
+  0%,
+  12% {
+    stroke-dashoffset: 410;
+  }
+  88%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes signal-scan {
+  to {
+    transform: translateX(528px);
+  }
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -55,7 +101,13 @@ button {
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .signal-wave {
+    stroke-dashoffset: 0;
   }
 }
