@@ -1,3 +1,4 @@
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import { projects } from "@/src/data/profile";
 
 const featuredProjects = projects.filter((project) => project.featured);
@@ -15,20 +16,9 @@ export function FeaturedProjects() {
         <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
           Products and technical systems built for real-world problems.
         </h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
           {featuredProjects.map((project) => (
-            <article
-              className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-6"
-              key={project.title}
-            >
-              <p className="text-sm font-semibold text-[var(--accent)]">
-                {project.category}
-              </p>
-              <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
-              <p className="mt-3 leading-7 text-[var(--muted)]">
-                {project.description}
-              </p>
-            </article>
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>

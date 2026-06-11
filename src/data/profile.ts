@@ -27,6 +27,11 @@ export interface Project {
   description: string;
   role: string;
   stack: string[];
+  impact?: string;
+  links?: Array<{
+    label: string;
+    href: string;
+  }>;
   featured: boolean;
 }
 
@@ -101,6 +106,7 @@ export const projects: Project[] = [
       "A mobile social product built with React Native, Expo, and Firebase.",
     role: "Founder and developer",
     stack: ["React Native", "Expo", "Firebase"],
+    impact: "Built and published as an iOS mobile app.",
     featured: true,
   },
   {
@@ -111,6 +117,7 @@ export const projects: Project[] = [
       "A research-to-product interface for working with EEG and ECG model inputs.",
     role: "Researcher and developer",
     stack: ["Python", "Flask", "React"],
+    impact: "Translated an AI healthcare research workflow into a usable interface.",
     featured: true,
   },
 ];
