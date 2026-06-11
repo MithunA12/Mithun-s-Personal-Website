@@ -40,6 +40,7 @@ export interface ResearchItem {
   slug: string;
   field: string;
   summary: string;
+  significance: string;
   methods: string[];
   publicationStatus: string;
   featured: boolean;
@@ -129,6 +130,8 @@ export const research: ResearchItem[] = [
     field: "AI healthcare",
     summary:
       "Research exploring signal processing, feature extraction, model evaluation, and the responsible translation of AI healthcare work into understandable tools.",
+    significance:
+      "Connects signal-processing research with tools that make complex model workflows easier to understand.",
     methods: [
       "EEG and ECG signal processing",
       "Feature extraction",
@@ -143,6 +146,8 @@ export const research: ResearchItem[] = [
     field: "Sleep research",
     summary:
       "Published work connecting computational analysis with sleep-related research and scientific communication.",
+    significance:
+      "Demonstrates experience translating computational analysis into published scientific communication.",
     methods: ["Clinical data analysis", "Scientific communication"],
     publicationStatus: "Published research",
     featured: false,

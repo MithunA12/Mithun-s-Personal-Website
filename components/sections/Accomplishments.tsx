@@ -2,21 +2,32 @@ import { accomplishments } from "@/src/data/profile";
 
 export function Accomplishments() {
   return (
-    <section className="border-y border-[var(--border)] bg-slate-950 px-6 py-20 text-white sm:px-8 lg:px-12">
+    <section
+      id="accomplishments"
+      className="scroll-mt-8 border-y border-[var(--border)] bg-slate-950 px-6 py-20 text-white sm:px-8 lg:px-12"
+    >
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-sm font-semibold uppercase tracking-[0.16em] text-blue-300">
           Accomplishments
         </p>
         <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-          A foundation across research, building, and leadership.
+          Recognition across research, technology, and leadership.
         </h2>
+        <p className="mt-4 max-w-2xl leading-7 text-slate-300">
+          Selected awards, research milestones, and leadership distinctions.
+        </p>
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {accomplishments.map((accomplishment) => (
             <li
-              className="rounded-lg border border-white/15 bg-white/5 p-5 leading-6"
+              className="rounded-lg border border-white/15 bg-white/5 p-5"
               key={accomplishment.title}
             >
-              {accomplishment.title}
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue-300">
+                {accomplishment.category}
+              </p>
+              <p className="mt-3 font-medium leading-6">
+                {accomplishment.title}
+              </p>
             </li>
           ))}
         </ul>
