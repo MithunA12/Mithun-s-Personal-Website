@@ -1,10 +1,18 @@
 const verticalGridLines = [48, 96, 144, 192, 240, 288, 336, 384, 432];
 const horizontalGridLines = [44, 88, 132, 176];
 const featureNodes = [
-  { cx: 347, cy: 70 },
-  { cx: 397, cy: 109 },
-  { cx: 349, cy: 151 },
-  { cx: 429, cy: 172 },
+  { cx: 370, cy: 67 },
+  { cx: 418, cy: 105 },
+  { cx: 372, cy: 148 },
+  { cx: 448, cy: 163 },
+];
+
+const featureVectors = [
+  { y: 70, width: 48, opacity: 0.55 },
+  { y: 88, width: 70, opacity: 0.78 },
+  { y: 106, width: 38, opacity: 0.48 },
+  { y: 124, width: 62, opacity: 0.68 },
+  { y: 142, width: 54, opacity: 0.6 },
 ];
 
 export function NeuralSignalVisual() {
@@ -37,9 +45,14 @@ export function NeuralSignalVisual() {
         viewBox="0 0 480 220"
       >
         <defs>
-          <linearGradient id="signal-gradient" x1="20" x2="325" y1="0" y2="0">
+          <linearGradient id="signal-gradient" x1="18" x2="184" y1="0" y2="0">
             <stop stopColor="#60a5fa" />
             <stop offset="0.52" stopColor="#22d3ee" />
+            <stop offset="1" stopColor="#a5f3fc" />
+          </linearGradient>
+          <linearGradient id="vector-gradient" x1="214" x2="300" y1="0" y2="0">
+            <stop stopColor="#2563eb" />
+            <stop offset="0.55" stopColor="#38bdf8" />
             <stop offset="1" stopColor="#a5f3fc" />
           </linearGradient>
           <radialGradient id="node-gradient">
@@ -48,7 +61,7 @@ export function NeuralSignalVisual() {
             <stop offset="1" stopColor="#1d4ed8" />
           </radialGradient>
           <clipPath id="signal-clip">
-            <rect height="220" width="480" />
+            <rect height="150" width="176" x="12" y="34" />
           </clipPath>
         </defs>
 
@@ -62,7 +75,7 @@ export function NeuralSignalVisual() {
         </g>
 
         <path
-          d="M18 112 L43 112 L55 108 L65 118 L76 111 L89 112 L104 111 L118 108 L130 121 L140 80 L150 145 L161 98 L170 116 L184 110 L198 112 L211 109 L224 119 L235 66 L246 157 L257 91 L268 118 L280 109 L293 113 L307 111 L321 111"
+          d="M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111"
           opacity="0.2"
           stroke="#38bdf8"
           strokeLinecap="round"
@@ -71,25 +84,47 @@ export function NeuralSignalVisual() {
         />
         <path
           className="signal-wave"
-          d="M18 112 L43 112 L55 108 L65 118 L76 111 L89 112 L104 111 L118 108 L130 121 L140 80 L150 145 L161 98 L170 116 L184 110 L198 112 L211 109 L224 119 L235 66 L246 157 L257 91 L268 118 L280 109 L293 113 L307 111 L321 111"
+          d="M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111"
           stroke="url(#signal-gradient)"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2.5"
         />
 
-        <g stroke="#38bdf8" strokeOpacity="0.38" strokeWidth="1.25">
-          <line x1="321" x2="347" y1="111" y2="70" />
-          <line x1="321" x2="397" y1="111" y2="109" />
-          <line x1="321" x2="349" y1="111" y2="151" />
-          <line x1="347" x2="397" y1="70" y2="109" />
-          <line x1="347" x2="429" y1="70" y2="172" />
-          <line x1="397" x2="349" y1="109" y2="151" />
-          <line x1="397" x2="429" y1="109" y2="172" />
-          <line x1="349" x2="429" y1="151" y2="172" />
+        <g aria-hidden="true">
+          <path d="M204 57 H197 V155 H204" stroke="#475569" strokeWidth="1.25" />
+          <path d="M306 57 H313 V155 H306" stroke="#475569" strokeWidth="1.25" />
+          {featureVectors.map((vector, index) => (
+            <g className="feature-vector" key={vector.y} style={{ animationDelay: `${index * 0.16}s` }}>
+              <rect
+                fill="url(#vector-gradient)"
+                height="7"
+                opacity={vector.opacity}
+                rx="3.5"
+                width={vector.width}
+                x="216"
+                y={vector.y}
+              />
+              <circle cx={288 + (index % 3) * 6} cy={vector.y + 3.5} fill="#67e8f9" opacity="0.7" r="2" />
+            </g>
+          ))}
+          <path d="M184 111 C194 111 198 106 204 106" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="1.25" />
+          <path d="M313 106 C328 106 338 105 352 105" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="1.25" />
+          <text fill="#64748b" fontFamily="monospace" fontSize="8" x="222" y="54">FEATURE VECTOR</text>
         </g>
 
-        <circle cx="321" cy="111" fill="#0f172a" r="6" stroke="#67e8f9" strokeWidth="2" />
+        <g stroke="#38bdf8" strokeOpacity="0.38" strokeWidth="1.25">
+          <line x1="352" x2="370" y1="105" y2="67" />
+          <line x1="352" x2="418" y1="105" y2="105" />
+          <line x1="352" x2="372" y1="105" y2="148" />
+          <line x1="370" x2="418" y1="67" y2="105" />
+          <line x1="370" x2="448" y1="67" y2="163" />
+          <line x1="418" x2="372" y1="105" y2="148" />
+          <line x1="418" x2="448" y1="105" y2="163" />
+          <line x1="372" x2="448" y1="148" y2="163" />
+        </g>
+
+        <circle cx="352" cy="105" fill="#0f172a" r="6" stroke="#67e8f9" strokeWidth="2" />
         {featureNodes.map((node, index) => (
           <g key={`${node.cx}-${node.cy}`}>
             <circle
@@ -109,17 +144,18 @@ export function NeuralSignalVisual() {
           <rect
             className="signal-scan"
             fill="url(#signal-gradient)"
-            height="220"
-            opacity="0.08"
-            width="48"
-            x="-48"
+            height="150"
+            opacity="0.12"
+            width="36"
+            x="-36"
+            y="34"
           />
         </g>
 
         <g fill="#94a3b8" fontFamily="monospace" fontSize="9" letterSpacing="1.1">
           <text x="18" y="202">EEG / ECG</text>
-          <text x="196" y="202">FEATURE EXTRACTION</text>
-          <text x="372" y="202">MODEL</text>
+          <text x="202" y="202">FEATURE EXTRACTION</text>
+          <text x="386" y="202">MODEL</text>
         </g>
       </svg>
     </figure>

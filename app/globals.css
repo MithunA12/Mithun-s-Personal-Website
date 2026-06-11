@@ -119,13 +119,19 @@ button {
 }
 
 .signal-wave {
-  animation: signal-draw 3.6s ease-in-out infinite alternate;
-  stroke-dasharray: 410;
-  stroke-dashoffset: 410;
+  animation: signal-draw 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  stroke-dasharray: 230;
+  stroke-dashoffset: 230;
 }
 
 .signal-scan {
-  animation: signal-scan 4.8s linear infinite;
+  animation: signal-scan 3.2s linear infinite;
+}
+
+.feature-vector {
+  animation: feature-vector-pulse 2.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
 }
 
 .signal-node-halo,
@@ -136,19 +142,52 @@ button {
 }
 
 @keyframes signal-draw {
-  0%,
-  12% {
-    stroke-dashoffset: 410;
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 230;
   }
-  88%,
+  8% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  94%,
   100% {
+    opacity: 0;
     stroke-dashoffset: 0;
   }
 }
 
 @keyframes signal-scan {
-  to {
-    transform: translateX(528px);
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  8% {
+    opacity: 0.12;
+  }
+  82% {
+    opacity: 0.12;
+    transform: translateX(224px);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: translateX(224px);
+  }
+}
+
+@keyframes feature-vector-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scaleX(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
 
