@@ -10,15 +10,21 @@ const featureNodes = [
 export function NeuralSignalVisual() {
   return (
     <figure
-      aria-label="Decorative signal-processing visualization"
+      aria-labelledby="neural-signal-caption"
       className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--dark)] shadow-[0_18px_55px_-32px_rgba(15,23,42,0.75)]"
     >
       <div className="flex items-center justify-between border-b border-slate-700/80 px-4 py-3">
-        <figcaption className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-blue-200">
+        <figcaption
+          className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-blue-200"
+          id="neural-signal-caption"
+        >
           Neural signal analysis
         </figcaption>
         <span className="flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-slate-400">
-          <span className="signal-status-dot h-1.5 w-1.5 rounded-full bg-cyan-300" />
+          <span
+            aria-hidden="true"
+            className="signal-status-dot h-1.5 w-1.5 rounded-full bg-cyan-300"
+          />
           Processing
         </span>
       </div>
@@ -27,7 +33,7 @@ export function NeuralSignalVisual() {
         aria-hidden="true"
         className="block h-auto w-full"
         fill="none"
-        role="img"
+        focusable="false"
         viewBox="0 0 480 220"
       >
         <defs>

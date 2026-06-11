@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { profile } from "@/src/data/profile";
 import "./globals.css";
 
 const themeScript = `
@@ -19,9 +20,48 @@ const themeScript = `
 `;
 
 export const metadata: Metadata = {
-  title: "Mithun Arun | AI/CS Researcher and Product Builder",
+  applicationName: `${profile.name} Portfolio`,
+  authors: [{ name: profile.name }],
+  category: "technology",
+  creator: profile.name,
   description:
-    "Portfolio of Mithun Arun, an AI/CS researcher and product builder working across healthcare, software engineering, and student innovation.",
+    "Portfolio of Mithun Arun, an AI/CS researcher and product builder with published healthcare AI work, software projects, and student leadership experience.",
+  keywords: [
+    "Mithun Arun",
+    "AI researcher",
+    "computer science",
+    "healthcare AI",
+    "software engineer portfolio",
+    "machine learning",
+    "signal processing",
+  ],
+  openGraph: {
+    description:
+      "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
+    locale: "en_US",
+    siteName: `${profile.name} Portfolio`,
+    title: `${profile.name} | AI/CS Researcher and Product Builder`,
+    type: "website",
+  },
+  robots: {
+    follow: true,
+    index: true,
+  },
+  title: `${profile.name} | AI/CS Researcher and Product Builder`,
+  twitter: {
+    card: "summary",
+    description:
+      "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
+    title: `${profile.name} | AI/CS Researcher and Product Builder`,
+  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { color: "#f6f8fb", media: "(prefers-color-scheme: light)" },
+    { color: "#0b1120", media: "(prefers-color-scheme: dark)" },
+  ],
 };
 
 export default function RootLayout({
@@ -39,6 +79,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full">
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         <ThemeToggle />
         {children}
       </body>
