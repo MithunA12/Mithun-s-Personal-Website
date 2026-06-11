@@ -73,6 +73,16 @@ body {
   mask-image: linear-gradient(to bottom, black, transparent 90%);
 }
 
+.story-grid {
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.15), transparent 26rem),
+    radial-gradient(circle at 82% 64%, rgba(34, 211, 238, 0.08), transparent 24rem),
+    linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+  mask-image: linear-gradient(to bottom, transparent, black 6%, black 94%, transparent);
+}
+
 a,
 button {
   -webkit-tap-highlight-color: transparent;
