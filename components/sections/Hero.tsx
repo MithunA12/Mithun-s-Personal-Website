@@ -51,12 +51,14 @@ const credibilitySignals = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)]">
+    <section className="liquid-backdrop relative overflow-hidden border-b border-[var(--border)] text-[var(--foreground)]">
+      <div aria-hidden="true" className="liquid-orb absolute -left-24 top-16 h-64 w-64 bg-blue-400/20" />
+      <div aria-hidden="true" className="liquid-orb absolute right-[-8rem] top-28 h-80 w-80 bg-cyan-300/15 [animation-delay:-5s]" />
       <ParallaxLayer className="pointer-events-none absolute inset-x-0 -top-24 h-[120%]" distance={38}>
         <div aria-hidden="true" className="page-grid h-full opacity-35" />
       </ParallaxLayer>
       <div className="mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 py-16 sm:gap-14 sm:px-8 sm:py-24 lg:grid-cols-[1.35fr_0.65fr] lg:items-start lg:px-12 lg:py-20">
-        <MotionReveal className="relative">
+        <MotionReveal className="glass-panel relative rounded-[2rem] p-7 sm:p-10 lg:p-12">
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)] sm:text-sm">
             {hero.eyebrow}
           </p>
@@ -90,7 +92,7 @@ export function Hero() {
         <ParallaxLayer className="relative" distance={22}>
           <aside
             aria-labelledby="credibility-heading"
-            className="border-t border-[var(--border)] pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
+            className="glass-panel rounded-[2rem] p-5 sm:p-6"
           >
             <NeuralSignalVisual />
             <p
@@ -105,7 +107,7 @@ export function Hero() {
             >
               {credibilitySignals.map((signal) => (
                 <div
-                  className="rounded-xl border border-[var(--border)] bg-[var(--background)] p-4 shadow-[0_8px_30px_-26px_var(--shadow-color)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--hover-border)] hover:shadow-[0_14px_36px_-26px_var(--shadow-color)] sm:p-5"
+                  className="material-inset rounded-2xl p-4 transition-[border-color,box-shadow,transform] duration-300 motion-safe:hover:-translate-y-0.5 hover:border-[var(--hover-border)] sm:p-5"
                   key={signal.label}
                 >
                   <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">

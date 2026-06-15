@@ -57,16 +57,21 @@ Environment variables:
 - `LLM_PROVIDER`: Optional. Defaults to `gemini` and currently supports Gemini only.
 - `GEMINI_API_KEY`: Required to enable chatbot responses.
 - `GEMINI_MODEL`: Optional. Defaults to `gemini-2.5-flash`.
+- `UPSTASH_REDIS_REST_URL`: Required for production chatbot rate limiting.
+- `UPSTASH_REDIS_REST_TOKEN`: Required for production chatbot rate limiting.
 
 Gemini offers a free tier subject to Google's current model availability and
 rate limits. Review the current limits before deployment, and never commit a
-real API key.
+real API key. Restrict the key to the Gemini/Generative Language API in Google
+Cloud, set conservative provider quotas and billing alerts, and rotate it if it
+is ever copied into client code, logs, source control, or a public build.
 
-The chat route validates message and history sizes, rejects oversized request
-bodies, and applies a dependency-free per-IP limit of 10 requests per minute.
-This in-memory limit is best-effort on serverless platforms because each
-function instance has separate, temporary memory. A hosted rate-limit store is
-the appropriate follow-up if sustained abuse becomes a concern.
+The chat route validates content type, origin, message/history sizes, and actual
+request bytes. It includes a honeypot, generic error responses, no-store API
+responses, and a per-IP limit of 8 requests per minute. Local development uses
+a bounded in-memory limiter. Vercel production fails closed unless the Upstash
+REST variables are configured, because an in-memory limiter is not reliable
+across serverless instances.
 
 ## Validation
 
@@ -95,7 +100,7 @@ npm run start
 3. Keep the detected framework preset as **Next.js**.
 4. Use the repository root as the root directory.
 5. Use `npm run build` as the build command if Vercel does not detect it automatically.
-6. Add `LLM_PROVIDER`, `GEMINI_API_KEY`, and optionally `GEMINI_MODEL` in the Vercel project environment settings.
+6. Add `LLM_PROVIDER`, `GEMINI_API_KEY`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, and optionally `GEMINI_MODEL` in the Vercel project environment settings. Mark secret values as sensitive and do not commit them.
 7. Deploy. No custom output directory is needed.
 
 Vercel will create preview deployments for branches and production deployments from the configured production branch. After deployment, verify the homepage, project filters, responsive layouts, social metadata, and several grounded `/ask` responses on the generated URL.

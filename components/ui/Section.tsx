@@ -11,7 +11,7 @@ interface SectionProps {
 }
 
 const toneClasses: Record<SectionTone, string> = {
-  default: "bg-[var(--background)] text-[var(--foreground)]",
+  default: "glass-section text-[var(--foreground)]",
   surface: "bg-[var(--surface)] text-[var(--foreground)]",
   dark: "border-slate-800 bg-[var(--dark)] text-white",
   accent: "bg-[var(--accent-soft)] text-[var(--foreground)]",

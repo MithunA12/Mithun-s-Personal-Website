@@ -10,8 +10,8 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--surface-translucent)] backdrop-blur-xl">
-      <div className="mx-auto grid min-h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 sm:px-8 lg:px-12">
+    <header className="sticky top-3 z-40 px-3 sm:top-4 sm:px-6">
+      <div className="glass-nav mx-auto grid min-h-14 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 rounded-[1.4rem] px-4 sm:px-6">
         <Link
           className="font-mono text-sm font-bold tracking-[-0.02em] text-[var(--foreground)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
           href="/"
@@ -28,7 +28,7 @@ export function SiteHeader() {
                 aria-current={isActive ? "page" : undefined}
                 className={`rounded-full px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
                   isActive
-                    ? "bg-[var(--accent-soft)] text-[var(--accent-strong)]"
+                    ? "bg-[var(--accent-soft)] text-[var(--accent-strong)] shadow-[inset_0_1px_0_var(--glass-highlight)]"
                     : "text-[var(--muted)] hover:bg-[var(--surface-subtle)] hover:text-[var(--foreground)]"
                 }`}
                 href={item.href}
@@ -44,7 +44,7 @@ export function SiteHeader() {
           <button
             aria-expanded={menuOpen}
             aria-label="Toggle navigation menu"
-            className="inline-flex min-h-11 items-center rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 text-xs font-bold uppercase tracking-[0.12em] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--accent)] lg:hidden"
+            className="glass-button inline-flex min-h-10 items-center rounded-full px-4 text-xs font-bold uppercase tracking-[0.12em] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--accent)] lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             type="button"
           >
@@ -56,7 +56,7 @@ export function SiteHeader() {
       {menuOpen ? (
         <nav
           aria-label="Mobile navigation"
-          className="border-t border-[var(--border)] bg-[var(--surface)] px-6 py-4 lg:hidden"
+          className="glass-nav mx-auto mt-2 max-w-6xl rounded-[1.4rem] px-4 py-4 lg:hidden"
         >
           <div className="mx-auto grid max-w-7xl gap-1 sm:grid-cols-2">
             {navigation.map((item) => {

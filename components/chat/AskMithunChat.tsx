@@ -10,7 +10,6 @@ type ChatMessage = {
 type ChatResponse = {
   answer?: string;
   error?: string;
-  provider?: "gemini";
 };
 
 const suggestedQuestions = [
@@ -24,6 +23,7 @@ export function AskMithunChat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [website, setWebsite] = useState("");
 
   async function askQuestion(question: string) {
     const message = question.trim();
@@ -39,7 +39,7 @@ export function AskMithunChat() {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, history: recentHistory }),
+        body: JSON.stringify({ message, history: recentHistory, website }),
       });
       const data = (await response.json()) as ChatResponse;
 
@@ -163,6 +163,18 @@ export function AskMithunChat() {
             className="border-t border-[var(--border)] bg-[var(--surface-subtle)] p-4 sm:p-5"
             onSubmit={handleSubmit}
           >
+            <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+              <label htmlFor="ask-mithun-website">Website</label>
+              <input
+                autoComplete="off"
+                id="ask-mithun-website"
+                name="website"
+                onChange={(event) => setWebsite(event.target.value)}
+                tabIndex={-1}
+                type="text"
+                value={website}
+              />
+            </div>
             <label className="sr-only" htmlFor="ask-mithun-message">
               Ask Mithun a question
             </label>

@@ -6,7 +6,7 @@ interface TagProps {
 }
 
 const classes =
-  "rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] shadow-[0_1px_2px_var(--shadow-color)]";
+  "glass-badge rounded-full px-3 py-1.5 text-xs font-semibold text-[var(--foreground)]";
 
 export function Tag({ as = "span", children }: TagProps) {
   if (as === "li") {

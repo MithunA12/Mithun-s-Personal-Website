@@ -13,9 +13,9 @@ export function Card({
 }: CardProps) {
   return (
     <article
-      className={`rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_10px_35px_-28px_var(--shadow-color)] sm:p-7 ${
+      className={`glass-card overflow-hidden rounded-[1.6rem] p-6 sm:p-7 ${
         polished
-          ? "transition-[border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-1 hover:border-[var(--hover-border)] hover:shadow-[0_22px_55px_-32px_var(--shadow-color)] focus-within:border-[var(--accent)] focus-within:shadow-[0_22px_55px_-32px_var(--shadow-color)]"
+          ? "transition-[border-color,box-shadow,transform] duration-300 motion-safe:hover:-translate-y-1.5 motion-safe:hover:scale-[1.01] hover:border-[var(--hover-border)] hover:shadow-[0_28px_70px_-38px_var(--shadow-color)] focus-within:border-[var(--accent)]"
           : ""
       } ${className}`}
     >

@@ -9,9 +9,9 @@ interface ButtonLinkProps {
 
 const variantClasses = {
   primary:
-    "border-transparent bg-[var(--accent-fill)] text-white shadow-[0_8px_24px_-12px_var(--shadow-color)] hover:bg-[var(--accent-fill-hover)]",
+    "glass-button glass-button-primary hover:saturate-125",
   secondary:
-    "border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] shadow-[0_1px_2px_var(--shadow-color)] hover:border-[var(--hover-border)] hover:bg-[var(--surface-subtle)]",
+    "glass-button text-[var(--foreground)]",
 };
 
 export function ButtonLink({
@@ -22,7 +22,7 @@ export function ButtonLink({
 }: ButtonLinkProps) {
   return (
     <a
-      className={`inline-flex min-h-12 items-center justify-center rounded-lg border px-6 py-3 text-sm font-semibold transition-[background-color,border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--accent)] ${variantClasses[variant]} ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center overflow-hidden rounded-full border px-6 py-3 text-sm font-semibold transition-[background-color,border-color,box-shadow,filter,transform] duration-300 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--accent)] ${variantClasses[variant]} ${className}`}
       href={href}
     >
       {children}

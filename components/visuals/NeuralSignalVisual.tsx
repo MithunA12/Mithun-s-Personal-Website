@@ -19,7 +19,7 @@ export function NeuralSignalVisual() {
   return (
     <figure
       aria-labelledby="neural-signal-caption"
-      className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--dark)] shadow-[0_18px_55px_-32px_rgba(15,23,42,0.75)]"
+      className="overflow-hidden rounded-[1.5rem] border border-white/15 bg-[linear-gradient(145deg,rgba(20,35,58,0.96),rgba(7,12,22,0.98))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_60px_-30px_rgba(15,23,42,0.85)]"
     >
       <div className="flex items-center justify-between border-b border-slate-700/80 px-4 py-3">
         <figcaption
