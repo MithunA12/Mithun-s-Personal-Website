@@ -14,6 +14,11 @@ function opacityAt(index: number, progress: number): number {
   return interpolate(input, opacity, progress);
 }
 
+function yAt(index: number, progress: number): number {
+  const { input, y } = sceneReveal(index, TOTAL);
+  return interpolate(input, y, progress);
+}
+
 function sweep(step = 0.001): number[] {
   const points: number[] = [];
   for (let p = 0; p <= 1 + 1e-9; p += step) points.push(Math.min(1, p));
@@ -63,6 +68,20 @@ test("scenes spin in from nothing; the last scene holds to the end", () => {
   for (let i = 0; i < TOTAL - 1; i += 1) {
     const segEnd = (i + 1) / TOTAL;
     assert.equal(opacityAt(i, segEnd), 0, `scene ${i} should be gone by its segment end`);
+  }
+});
+
+test("scenes rotate in from above and exit downward as you scroll past", () => {
+  // The pinwheel-on-its-side feel: content arrives from above (negative y) and,
+  // for every non-final scene, leaves downward (positive y) rather than drifting
+  // up. Motion is monotonic downward through the scene's life.
+  for (let i = 0; i < TOTAL; i += 1) {
+    const segStart = i / TOTAL;
+    assert.ok(yAt(i, segStart) < 0, `scene ${i} should enter from above`);
+    if (i < TOTAL - 1) {
+      const segEnd = (i + 1) / TOTAL;
+      assert.ok(yAt(i, segEnd) > 0, `scene ${i} should exit downward`);
+    }
   }
 });
 

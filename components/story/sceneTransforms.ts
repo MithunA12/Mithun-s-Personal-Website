@@ -34,12 +34,16 @@ export function sceneReveal(index: number, total: number): SceneReveal {
   const segEnd = (index + 1) * segment;
   const isLast = index === total - 1;
 
+  // Reads like facing a pinwheel turning on its side: a scene rotates in from
+  // above (tilted, lifted), faces you flat at the centre, then — as you scroll
+  // past it — keeps rotating the same way, dropping DOWN and tilting away. The
+  // final scene holds instead of rotating out.
   return {
     input: [segStart, segStart + enter, segEnd - exit, segEnd],
     opacity: [0, 1, 1, isLast ? 1 : 0],
-    scale: [0.94, 1, 1, isLast ? 1 : 0.98],
-    y: [40, 0, 0, isLast ? 0 : -30],
-    rotateX: [6, 0, 0, isLast ? 0 : -4],
+    scale: [0.9, 1, 1, isLast ? 1 : 0.9],
+    y: [-60, 0, 0, isLast ? 0 : 60],
+    rotateX: [14, 0, 0, isLast ? 0 : -14],
   };
 }
 
