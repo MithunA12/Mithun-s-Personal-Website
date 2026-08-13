@@ -278,7 +278,7 @@ The site should include:
 
 - Responsive navigation
 - Dark/light mode
-- Polished hero section
+- Polished intro section
 - Interactive project cards
 - Project filtering
 - Animated EEG, ECG, or neural-network-inspired visual
@@ -292,7 +292,7 @@ The site should include:
 
 Use Framer Motion for:
 
-- Hero entrance animations
+- Intro entrance animations
 - Section reveals
 - Card hover effects
 - Timeline transitions
@@ -316,7 +316,7 @@ At least two of the following should be implemented or planned:
    - Can be SVG, Canvas, or lightweight React animation.
 
 2. **Neural Network Background**
-   - Subtle animated node-edge graph in the hero or research section.
+   - Subtle animated node-edge graph in the intro or research section.
    - Must remain readable and non-distracting.
 
 3. **Research Pipeline Diagram**
@@ -555,7 +555,7 @@ The Design Agent improves visual direction, layout, motion, interaction design, 
 
 ### Design Requirements
 
-- Hero section must clearly state who Mithun is.
+- Intro section must clearly state who Mithun is.
 - Project cards must communicate title, category, role, tech stack, and impact quickly.
 - Research sections must feel credible and data-oriented.
 - Quant-tech appeal should be supported through clean data, metrics, and time-series visuals.
@@ -849,7 +849,7 @@ feature/project-filtering
 feature/research-visualizer
 fix/mobile-nav
 content/research-copy
-polish/hero-animation
+polish/intro-animation
 ```
 
 ### Commit Style
@@ -860,7 +860,7 @@ Use clear, specific commit messages:
 feat: add filterable project explorer
 fix: improve mobile navigation spacing
 content: revise NeuroHero project summary
-polish: add hero EEG animation
+polish: add intro EEG animation
 chore: add metadata helpers
 ```
 
@@ -883,7 +883,7 @@ Good PR examples:
 - Add project card component
 - Add project filtering
 - Add research page metadata
-- Improve homepage hero copy
+- Improve homepage intro copy
 - Add dark/light mode toggle
 
 Bad PR examples:

@@ -1,7 +1,7 @@
-# Task 003: Hero and Positioning
+# Task 003: Intro and Positioning
 
 ## Goal
-Create a polished, recruiter-facing hero section that clearly positions Mithun Arun as an AI/CS researcher, product builder, startup-oriented founder, and student leader.
+Create a polished, recruiter-facing intro section that clearly positions Mithun Arun as an AI/CS researcher, product builder, startup-oriented founder, and student leader.
 
 ## Context
 Before making changes, read:
@@ -10,7 +10,7 @@ Before making changes, read:
 - `src/data/profile.ts`
 
 ## Requirements
-- Improve the homepage hero section using existing data from `src/data/profile.ts`.
+- Improve the homepage intro section using existing data from `src/data/profile.ts`.
 - Include a strong headline, short subheading, and clear calls to action.
 - Add visual hierarchy and responsive spacing.
 - Include quick credibility signals such as research, app building, leadership, or awards.
@@ -19,8 +19,8 @@ Before making changes, read:
 - Do not redesign unrelated sections.
 
 ## Acceptance Criteria
-- Hero section looks polished on mobile and desktop.
-- Hero copy is specific to Mithun.
+- Intro section looks polished on mobile and desktop.
+- Intro copy is specific to Mithun.
 - Buttons or links work if destinations exist.
 - No unrelated files are changed.
 - `npm run lint` passes.

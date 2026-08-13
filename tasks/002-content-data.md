@@ -16,7 +16,7 @@ Create a new file:
 This file should export structured TypeScript data for:
 
 1. Personal identity
-2. Hero positioning
+2. Intro positioning
 3. Featured projects
 4. Research/publications
 5. Accomplishments

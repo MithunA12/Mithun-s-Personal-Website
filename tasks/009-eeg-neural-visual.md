@@ -7,7 +7,7 @@ Add a visually impressive EEG or neural-network-inspired visual that fits Mithun
 Before making changes, read:
 - `AGENTS.md`
 - `portfolio-spec.md`
-- Existing hero and design system
+- Existing intro and design system
 
 ## Requirements
 - Create a lightweight animated visual inspired by EEG signals, neural networks, or signal processing.
@@ -15,7 +15,7 @@ Before making changes, read:
 - Keep performance strong.
 - Make it responsive.
 - Respect reduced-motion preferences where possible.
-- The visual should enhance the hero or research section without overwhelming content.
+- The visual should enhance the intro or research section without overwhelming content.
 - Do not add unnecessary heavy dependencies.
 
 ## Acceptance Criteria

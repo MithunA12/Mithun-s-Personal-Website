@@ -106,7 +106,7 @@ The homepage should tell this story in order:
 5. **Where he is going**  
    SWE, AI/ML, and quant-tech opportunities where he can build intelligent, reliable, data-driven systems.
 
-### 3.2 Homepage Hero Copy
+### 3.2 Homepage Intro Copy
 
 **Headline:**  
 Mithun Arun
@@ -185,7 +185,7 @@ Optional secondary nav or footer links:
 
 ## 5. Top 5 Site Sections
 
-### 5.1 Hero / Recruiter Landing Section
+### 5.1 Intro / Recruiter Landing Section
 
 Purpose: Make the value proposition obvious within five seconds.
 
@@ -202,7 +202,7 @@ Recruiter optimization:
 
 - Include role tags: `SWE`, `AI/ML`, `Research`, `Product`, `Quant-Tech`.
 - Include a clear resume download button above the fold.
-- Include links to GitHub and LinkedIn in the hero or navbar.
+- Include links to GitHub and LinkedIn in the intro or navbar.
 
 ---
 
@@ -469,9 +469,9 @@ The website must feel like a modern technical product, not a static resume page.
 
 ### 7.1 Required Interactive Elements
 
-#### Animated Hero Section
+#### Animated Intro Section
 
-The homepage hero must include a subtle animated technical background inspired by at least one of the following:
+The homepage intro must include a subtle animated technical background inspired by at least one of the following:
 
 - Neural networks
 - ECG signals
@@ -482,10 +482,10 @@ The homepage hero must include a subtle animated technical background inspired b
 
 Requirements:
 
-- Hero text should have polished entrance animations.
+- Intro text should have polished entrance animations.
 - CTA buttons should include hover states and microinteractions.
 - The animation should look technical and premium, not gimmicky.
-- The hero must still load quickly and remain readable.
+- The intro must still load quickly and remain readable.
 
 #### Interactive Project Explorer
 
@@ -575,7 +575,7 @@ At least two of the following technical visuals must be implemented in Version 1
 
 #### Neural Network Background
 
-A subtle animated node-and-edge visual in the hero section.
+A subtle animated node-and-edge visual in the intro section.
 
 Purpose:
 
@@ -765,7 +765,7 @@ export type TimelineItem = {
 
 Must include:
 
-- Hero
+- Intro
 - Proof badges
 - Recruiter mode toggle
 - Featured research
@@ -966,7 +966,7 @@ Highlighted skills:
 Resume should be available from:
 
 - Navbar
-- Hero section
+- Intro section
 - Footer
 - About page
 - Contact section
@@ -1023,9 +1023,9 @@ Expected output:
 
 ### Phase 2 — Core Pages
 
-#### Task 4: Build Homepage Hero
+#### Task 4: Build Homepage Intro
 
-- Add hero copy.
+- Add intro copy.
 - Add CTA buttons.
 - Add proof badges.
 - Add animated technical background.
@@ -1125,7 +1125,7 @@ Expected output:
 
 #### Task 13: Build Technical Visual Renderers
 
-- Build animated hero visual.
+- Build animated intro visual.
 - Build EEG/ECG signal renderer or neural-network renderer.
 - Build research pipeline diagram.
 - Add reduced-motion fallback.
@@ -1293,7 +1293,7 @@ Expected output:
 - GitHub/LinkedIn/contact links
 - Timeline preview
 - Basic writing page
-- Animated hero section
+- Animated intro section
 - At least two technical visual renderers
 - Basic project filtering and interaction
 

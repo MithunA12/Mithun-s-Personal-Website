@@ -14,7 +14,7 @@ Before making changes, read:
 - Create a clean homepage layout.
 - Add a basic responsive page structure.
 - Add placeholder sections for:
-  - Hero
+  - Intro
   - About
   - Featured Projects
   - Research

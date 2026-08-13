@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useMotionValue, useTransform, type MotionValue } from "framer-motion";
+
 const verticalGridLines = [48, 96, 144, 192, 240, 288, 336, 384, 432];
 const horizontalGridLines = [44, 88, 132, 176];
 const featureNodes = [
@@ -15,7 +19,38 @@ const featureVectors = [
   { y: 142, width: 54, opacity: 0.6 },
 ];
 
-export function NeuralSignalVisual() {
+const networkEdges = [
+  [352, 105, 370, 67],
+  [352, 105, 418, 105],
+  [352, 105, 372, 148],
+  [370, 67, 418, 105],
+  [370, 67, 448, 163],
+  [418, 105, 372, 148],
+  [418, 105, 448, 163],
+  [372, 148, 448, 163],
+];
+
+const WAVE_D =
+  "M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111";
+
+interface NeuralSignalVisualProps {
+  /**
+   * When provided, the pipeline builds itself from this 0..1 scroll value: the
+   * waveform draws, the feature vectors light up, then the model graph connects.
+   * When omitted, the visual uses its ambient looping CSS animation (hero).
+   */
+  drawProgress?: MotionValue<number>;
+}
+
+export function NeuralSignalVisual({ drawProgress }: NeuralSignalVisualProps) {
+  const fallback = useMotionValue(1);
+  const progress = drawProgress ?? fallback;
+  const scroll = Boolean(drawProgress);
+
+  const vectorsOpacity = useTransform(progress, [0.03, 0.22], [0, 1]);
+  const edgesOpacity = useTransform(progress, [0.12, 0.3], [0, 1]);
+  const nodesOpacity = useTransform(progress, [0.16, 0.34], [0, 1]);
+
   return (
     <figure
       aria-labelledby="neural-signal-caption"
@@ -72,70 +107,129 @@ export function NeuralSignalVisual() {
         </g>
 
         <path
-          d="M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111"
+          d={WAVE_D}
           opacity="0.2"
           stroke="#38bdf8"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="7"
         />
-        <path
-          className="signal-wave"
-          d="M18 112 L34 112 L43 108 L51 117 L59 111 L71 112 L83 110 L94 113 L105 108 L115 121 L125 78 L135 146 L145 96 L154 118 L163 109 L173 113 L184 111"
-          pathLength="1"
-          stroke="url(#signal-gradient)"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2.5"
-        />
+        {scroll ? (
+          <motion.path
+            d={WAVE_D}
+            initial={false}
+            stroke="url(#signal-gradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.5"
+            style={{ pathLength: progress }}
+          />
+        ) : (
+          <path
+            className="signal-wave"
+            d={WAVE_D}
+            pathLength={1}
+            stroke="url(#signal-gradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2.5"
+          />
+        )}
 
         <g aria-hidden="true">
           <path d="M204 57 H197 V155 H204" stroke="#475569" strokeWidth="1.25" />
           <path d="M306 57 H313 V155 H306" stroke="#475569" strokeWidth="1.25" />
-          {featureVectors.map((vector, index) => (
-            <g className="feature-vector" key={vector.y} style={{ animationDelay: `${index * 0.16}s` }}>
-              <rect
-                fill="url(#vector-gradient)"
-                height="7"
-                opacity={vector.opacity}
-                rx="3.5"
-                width={vector.width}
-                x="216"
-                y={vector.y}
-              />
-              <circle cx={288 + (index % 3) * 6} cy={vector.y + 3.5} fill="#67e8f9" opacity="0.7" r="2" />
-            </g>
-          ))}
-          <path d="M313 106 C328 106 338 105 352 105" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="1.25" />
-          <text fill="#64748b" fontFamily="monospace" fontSize="8" x="222" y="54">FEATURE VECTOR</text>
+          {featureVectors.map((vector, index) => {
+            const rect = (
+              <>
+                <rect
+                  fill="url(#vector-gradient)"
+                  height="7"
+                  opacity={vector.opacity}
+                  rx="3.5"
+                  width={vector.width}
+                  x="216"
+                  y={vector.y}
+                />
+                <circle
+                  cx={288 + (index % 3) * 6}
+                  cy={vector.y + 3.5}
+                  fill="#67e8f9"
+                  opacity="0.7"
+                  r="2"
+                />
+              </>
+            );
+            return scroll ? (
+              <motion.g initial={false} key={vector.y} style={{ opacity: vectorsOpacity }}>
+                {rect}
+              </motion.g>
+            ) : (
+              <g
+                className="feature-vector"
+                key={vector.y}
+                style={{ animationDelay: `${index * 0.16}s` }}
+              >
+                {rect}
+              </g>
+            );
+          })}
+          <path
+            d="M313 106 C328 106 338 105 352 105"
+            stroke="#38bdf8"
+            strokeOpacity="0.55"
+            strokeWidth="1.25"
+          />
+          <text fill="#64748b" fontFamily="monospace" fontSize="8" x="222" y="54">
+            FEATURE VECTOR
+          </text>
         </g>
 
-        <g stroke="#38bdf8" strokeOpacity="0.38" strokeWidth="1.25">
-          <line x1="352" x2="370" y1="105" y2="67" />
-          <line x1="352" x2="418" y1="105" y2="105" />
-          <line x1="352" x2="372" y1="105" y2="148" />
-          <line x1="370" x2="418" y1="67" y2="105" />
-          <line x1="370" x2="448" y1="67" y2="163" />
-          <line x1="418" x2="372" y1="105" y2="148" />
-          <line x1="418" x2="448" y1="105" y2="163" />
-          <line x1="372" x2="448" y1="148" y2="163" />
-        </g>
+        {scroll ? (
+          <motion.g
+            initial={false}
+            stroke="#38bdf8"
+            strokeOpacity="0.38"
+            strokeWidth="1.25"
+            style={{ opacity: edgesOpacity }}
+          >
+            {networkEdges.map(([x1, y1, x2, y2]) => (
+              <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} x2={x2} y1={y1} y2={y2} />
+            ))}
+          </motion.g>
+        ) : (
+          <g stroke="#38bdf8" strokeOpacity="0.38" strokeWidth="1.25">
+            {networkEdges.map(([x1, y1, x2, y2]) => (
+              <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} x2={x2} y1={y1} y2={y2} />
+            ))}
+          </g>
+        )}
 
         <circle cx="352" cy="105" fill="#0f172a" r="6" stroke="#67e8f9" strokeWidth="2" />
-        {featureNodes.map((node, index) => (
-          <g key={`${node.cx}-${node.cy}`}>
-            <circle
-              className="signal-node-halo"
-              cx={node.cx}
-              cy={node.cy}
-              fill="#38bdf8"
-              opacity="0.16"
-              r="12"
-              style={{ animationDelay: `${index * 0.35}s` }}
-            />
+        {featureNodes.map((node, index) => {
+          const core = (
             <circle cx={node.cx} cy={node.cy} fill="url(#node-gradient)" r="4.5" />
-          </g>
-        ))}
+          );
+          return scroll ? (
+            <motion.g initial={false} key={`${node.cx}-${node.cy}`} style={{ opacity: nodesOpacity }}>
+              <circle cx={node.cx} cy={node.cy} fill="#38bdf8" opacity="0.16" r="12" />
+              {core}
+            </motion.g>
+          ) : (
+            <g key={`${node.cx}-${node.cy}`}>
+              <circle
+                className="signal-node-halo"
+                cx={node.cx}
+                cy={node.cy}
+                fill="#38bdf8"
+                opacity="0.16"
+                r="12"
+                style={{ animationDelay: `${index * 0.35}s` }}
+              />
+              {core}
+            </g>
+          );
+        })}
 
         <g fill="#94a3b8" fontFamily="monospace" fontSize="9" letterSpacing="1.1">
           <text x="18" y="202">EEG / ECG</text>
