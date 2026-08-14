@@ -111,7 +111,7 @@ export function PortfolioStory() {
         <div className="grid gap-4 sm:grid-cols-2">
           {projects.map((project) => (
             <article
-              className="rounded-2xl border border-white/15 bg-white/[0.07] p-6 shadow-xl shadow-black/15 backdrop-blur transition-transform duration-300 motion-safe:hover:-translate-y-1"
+              className="rounded-2xl border border-white/15 bg-white/[0.07] p-6 shadow-xl shadow-black/15 backdrop-blur transition-transform duration-300 motion-safe:hover:-translate-y-1 sm:odd:last:col-span-2 sm:odd:last:mx-auto sm:odd:last:w-full sm:odd:last:max-w-[calc(50%-0.5rem)]"
               key={project.slug}
             >
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-blue-300">

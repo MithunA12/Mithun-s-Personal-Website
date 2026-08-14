@@ -61,6 +61,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
           {visibleProjects.map((project, index) => (
             <motion.div
               animate={{ opacity: 1, y: 0 }}
+              className="md:odd:last:col-span-2 md:odd:last:mx-auto md:odd:last:w-full md:odd:last:max-w-[calc(50%-0.625rem)]"
               exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               key={project.slug}
