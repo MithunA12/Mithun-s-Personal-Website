@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
+import Redis from "ioredis";
 
 const RATE_LIMIT_MAX_ENTRIES = 1_000;
 const UPSTASH_TIMEOUT_MS = 2_500;
+const REDIS_TCP_TIMEOUT_MS = 3_000;
 
 type RateLimitEntry = {
   count: number;
@@ -127,10 +129,84 @@ async function checkUpstashRateLimit(
   }
 }
 
+// A single TCP client is reused across warm invocations. It is created lazily
+// so ioredis never connects unless REDIS_URL is actually configured.
+let tcpClient: Redis | null = null;
+let tcpClientResolved = false;
+
+function getTcpRedisClient(): Redis | null {
+  if (tcpClientResolved) return tcpClient;
+  tcpClientResolved = true;
+
+  const connectionUrl = process.env.REDIS_URL?.trim();
+  if (!connectionUrl) return null;
+
+  try {
+    tcpClient = new Redis(connectionUrl, {
+      connectTimeout: REDIS_TCP_TIMEOUT_MS,
+      commandTimeout: REDIS_TCP_TIMEOUT_MS,
+      maxRetriesPerRequest: 1,
+    });
+    // Swallow connection-level errors so they don't crash the process; each
+    // command fails closed on its own below.
+    tcpClient.on("error", () => {});
+  } catch {
+    tcpClient = null;
+  }
+
+  return tcpClient;
+}
+
+async function checkTcpRedisRateLimit(
+  options: RateLimitOptions,
+  client: Redis,
+): Promise<RateLimitResult> {
+  const windowSeconds = Math.ceil(options.windowMs / 1_000);
+  const key = `rate-limit:${options.namespace}:${hashIdentifier(options.identifier)}`;
+  const script = [
+    "local count = redis.call('INCR', KEYS[1])",
+    "if count == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end",
+    "local ttl = redis.call('TTL', KEYS[1])",
+    "return {count, ttl}",
+  ].join(" ");
+
+  const result = (await client.eval(
+    script,
+    1,
+    key,
+    String(windowSeconds),
+  )) as [number, number];
+
+  const count = Number(result?.[0]);
+  const ttl = Math.max(1, Number(result?.[1]));
+  if (!Number.isFinite(count) || !Number.isFinite(ttl)) {
+    throw new Error("Rate-limit store returned an invalid response.");
+  }
+
+  const retryAfterSeconds = count > options.limit ? ttl : 0;
+  return {
+    allowed: count <= options.limit,
+    limit: options.limit,
+    remaining: Math.max(0, options.limit - count),
+    resetAt: Date.now() + ttl * 1_000,
+    retryAfterSeconds,
+  };
+}
+
+function unavailable(options: RateLimitOptions, retryAfterSeconds: number): RateLimitResult {
+  return {
+    allowed: false,
+    limit: options.limit,
+    remaining: 0,
+    resetAt: Date.now() + retryAfterSeconds * 1_000,
+    retryAfterSeconds,
+    unavailable: true,
+  };
+}
+
 export async function checkRateLimit(options: RateLimitOptions): Promise<RateLimitResult> {
-  // Accept either the Upstash-native names or the Vercel-KV-style names that
-  // the Vercel Redis integration injects. Note: REDIS_URL (a redis:// TCP
-  // connection string) is NOT usable here — this client speaks the HTTP REST API.
+  // Preferred: Upstash HTTP REST API. Accepts the Upstash-native names or the
+  // Vercel-KV-style names that some Redis integrations inject.
   const url = (
     process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
   )?.trim();
@@ -142,14 +218,20 @@ export async function checkRateLimit(options: RateLimitOptions): Promise<RateLim
     try {
       return await checkUpstashRateLimit(options, url, token);
     } catch {
-      return {
-        allowed: false,
-        limit: options.limit,
-        remaining: 0,
-        resetAt: Date.now() + 30_000,
-        retryAfterSeconds: 30,
-        unavailable: true,
-      };
+      return unavailable(options, 30);
+    }
+  }
+
+  // Fallback: a plain redis:// / rediss:// TCP connection string (REDIS_URL),
+  // which is what most non-Upstash Vercel Redis integrations provide.
+  if (process.env.REDIS_URL?.trim()) {
+    const client = getTcpRedisClient();
+    if (client) {
+      try {
+        return await checkTcpRedisRateLimit(options, client);
+      } catch {
+        return unavailable(options, 30);
+      }
     }
   }
 

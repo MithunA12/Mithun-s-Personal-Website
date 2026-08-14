@@ -16,6 +16,9 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // ioredis is a Node TCP client; keep it external so Next requires it at
+  // runtime instead of bundling it into the serverless function.
+  serverExternalPackages: ["ioredis"],
   async redirects() {
     return [
       { source: "/projects", destination: "/portfolio", permanent: true },
