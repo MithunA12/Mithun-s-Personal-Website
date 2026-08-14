@@ -1,4 +1,3 @@
-import { About } from "@/components/sections/About";
 import { Hero } from "@/components/sections/Hero";
 import { HomeHighlights } from "@/components/sections/HomeHighlights";
 import { LandingContact } from "@/components/sections/LandingContact";
@@ -10,7 +9,6 @@ export default function Home() {
     <PageShell>
       <Hero />
       <PortfolioStory />
-      <About />
       <HomeHighlights />
       <LandingContact />
     </PageShell>

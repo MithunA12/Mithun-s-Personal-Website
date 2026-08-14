@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   category: "technology",
   creator: profile.name,
   description:
-    "Portfolio of Mithun Arun, an AI/CS researcher and product builder with published healthcare AI work, software projects, and student leadership experience.",
+    "Portfolio of Mithun Arun, an AI/Biomedical researcher and product builder with published healthcare AI work, software projects, and student leadership experience.",
   keywords: [
     "Mithun Arun",
     "AI researcher",
@@ -26,19 +26,19 @@ export const metadata: Metadata = {
       "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
     locale: "en_US",
     siteName: `${profile.name} Portfolio`,
-    title: `${profile.name} | AI/CS Researcher and Product Builder`,
+    title: `${profile.name} | AI Researcher and Product Builder`,
     type: "website",
   },
   robots: {
     follow: true,
     index: true,
   },
-  title: `${profile.name} | AI/CS Researcher and Product Builder`,
+  title: `${profile.name} | AI Researcher and Product Builder`,
   twitter: {
     card: "summary",
     description:
       "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
-    title: `${profile.name} | AI/CS Researcher and Product Builder`,
+    title: `${profile.name} | AI Researcher and Product Builder`,
   },
 };
 

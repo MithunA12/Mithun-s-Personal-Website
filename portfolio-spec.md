@@ -4,7 +4,7 @@
 
 This document defines the product direction, information architecture, content strategy, technical feature set, and quality bar for Mithun Arun's personal website.
 
-The website should present Mithun as a high-potential AI/CS researcher, software engineer, product builder, startup-oriented founder, and student leader. It must be optimized for recruiters and technical reviewers in three target areas:
+The website should present Mithun as a high-potential AI/Biomedical researcher, software engineer, product builder, startup-oriented founder, and student leader. It must be optimized for recruiters and technical reviewers in three target areas:
 
 1. **Software Engineering** — evidence of strong engineering fundamentals, full-stack/mobile development, maintainable systems, product execution, and ability to ship.
 2. **AI / Machine Learning** — evidence of research ability, model development, signal processing, healthcare AI experience, publications, and technical communication.
@@ -63,15 +63,15 @@ They should quickly understand:
 
 ### 2.1 Main Positioning Statement
 
-**Mithun Arun is an AI/CS researcher and product builder using intelligent systems to solve high-impact problems in healthcare, learning, and human decision-making.**
+**Mithun Arun is an AI/Biomedical researcher and product builder using intelligent systems to solve high-impact problems in healthcare, learning, and human decision-making.**
 
 ### 2.2 Recruiter-Facing One-Liner
 
-**AI/CS researcher and builder with published healthcare AI work, full-stack/mobile product experience, and leadership across hackathons, debate, and student innovation.**
+**AI/Biomedical researcher and builder with published healthcare AI work, full-stack/mobile product experience, and leadership across hackathons, debate, and student innovation.**
 
 ### 2.3 Expanded Bio
 
-Mithun Arun is an AI/CS researcher, software builder, and student leader focused on applying intelligent systems to healthcare, education, and decision-making. His work includes published AI healthcare research using EEG/ECG data, mobile app development, hackathon leadership, and product research. He combines technical depth in machine learning and signal processing with communication skills developed through debate, Model UN, teaching, and community leadership.
+Mithun Arun is an AI/Biomedical researcher, software builder, and student leader focused on applying intelligent systems to healthcare, education, and decision-making. His work includes published AI healthcare research using EEG/ECG data, mobile app development, hackathon leadership, and product research. He combines technical depth in machine learning and signal processing with communication skills developed through debate, Model UN, teaching, and community leadership.
 
 ### 2.4 Brand Pillars
 
@@ -92,7 +92,7 @@ The website should reinforce five pillars:
 The homepage should tell this story in order:
 
 1. **Who Mithun is**  
-   AI/CS researcher, product builder, and student founder.
+   AI/Biomedical researcher, product builder, and student founder.
 
 2. **What he builds**  
    AI healthcare systems, mobile apps, research tools, and student-focused products.
@@ -112,7 +112,7 @@ The homepage should tell this story in order:
 Mithun Arun
 
 **Subheadline:**  
-AI/CS researcher and product builder creating intelligent systems for healthcare, learning, and human decision-making.
+AI/Biomedical researcher and product builder creating intelligent systems for healthcare, learning, and human decision-making.
 
 **Short Description:**  
 I build at the intersection of machine learning, software engineering, signal processing, and product design. My work spans published AI healthcare research, mobile app development, hackathon leadership, and data-driven tools for real-world problems.

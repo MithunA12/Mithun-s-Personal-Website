@@ -77,22 +77,22 @@ export interface NavigationItem {
 export const profile: Profile = {
   name: "Mithun Arun",
   role:
-    "AI/CS researcher, product builder, startup-oriented founder, and student leader",
+    "AI/Biomedical researcher, product builder, startup-oriented founder, and student leader",
   shortBio:
-    "AI/CS researcher, software builder, and student leader focused on intelligent systems for healthcare, education, and decision-making.",
+    "AI/Biomedical researcher, software builder, and student leader focused on intelligent systems for healthcare, education, and decision-making.",
   bio: [
-    "I am an AI/CS researcher, software builder, and student leader focused on applying intelligent systems to healthcare, education, and decision-making.",
+    "I am an AI/Biomedical researcher, software builder, and student leader focused on applying intelligent systems to healthcare, education, and decision-making.",
     "My work spans AI healthcare research using EEG and ECG data, mobile application development, hackathon leadership, and product-focused technical projects.",
   ],
 };
 
 export const hero: HeroContent = {
-  eyebrow: "AI/CS researcher · Product builder · Founder · Student leader",
+  eyebrow: "",
   headline:
-    "Building intelligent systems and turning technical research into useful tools.",
+    "Disrupting industries with interesting tech.",
   description:
     "I build intelligent systems for healthcare, learning, and human decision-making through machine learning, software engineering, signal processing, and product design.",
-  focusAreas: ["AI/ML", "Software Engineering", "Research", "Project"],
+  focusAreas: ["AI/ML", "Software Engineering", "Research", "Distributed Systems"],
   primaryCta: {
     label: "View projects",
     href: "/projects",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     slug: "worldview",
     category: "Mobile product",
     description:
-      "A mobile social product built with React Native, Expo, and Firebase.",
+      "A social media app built with React Native, Expo, and Firebase.",
     role: "Founder and developer",
     stack: ["React Native", "Expo", "Firebase"],
     impact: "Built and published as an iOS mobile app.",
@@ -130,9 +130,9 @@ export const projects: Project[] = [
     slug: "neurohero-web-app",
     category: "AI healthcare",
     description:
-      "A research-to-product interface for working with EEG and ECG model inputs.",
+      "A research-to-product interface for working with EEG and ECG model inputs to prognosticate post-anoxic comas.",
     role: "Researcher and developer",
-    stack: ["Python", "Flask", "React"],
+    stack: ["Python", "TensorFlow", "Flask", "React"],
     impact: "Translated an AI healthcare research workflow into a usable interface.",
     featured: true,
   },
@@ -140,17 +140,18 @@ export const projects: Project[] = [
 
 export const research: ResearchItem[] = [
   {
-    title: "EEG and ECG prognosis research",
-    slug: "neurohero",
+    title: "Post-Anoxic Coma Prognosis Research",
+    slug: "Neurohero",
     field: "AI healthcare",
     summary:
-      "Research exploring signal processing, feature extraction, model evaluation, and the responsible translation of AI healthcare work into understandable tools.",
+      "Research harnessing signal processing, feature extraction, DL model training, and a novel approach to model building that elevates explainability.",
     significance:
-      "Connects signal-processing research with tools that make complex model workflows easier to understand.",
+      "Enables neurologists and cardiologists to make more informed decisions regarding coma progonostication with ease, speed, and accuracy.",
     methods: [
-      "EEG and ECG signal processing",
-      "Feature extraction",
-      "Model evaluation",
+      "EEG and ECG Signal Processing",
+      "Feature Extraction",
+      "Neural Network Training",
+      "Model Evaluation",
     ],
     publicationStatus: "Published and presented research",
     featured: true,

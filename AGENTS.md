@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains the personal website for **Mithun Arun**. The site should present Mithun as an **AI/CS researcher, product builder, startup-oriented founder, and student leader** with strong appeal to recruiters in **software engineering, AI/ML, and quantitative technology** roles.
+This repository contains the personal website for **Mithun Arun**. The site should present Mithun as an **AI/Biomedical researcher, product builder, startup-oriented founder, and student leader** with strong appeal to recruiters in **software engineering, AI/ML, and quantitative technology** roles.
 
 The website must showcase:
 
@@ -478,7 +478,7 @@ The Strategy Agent improves the website’s narrative, positioning, sitemap, inf
 ### Responsibilities
 
 - Read `portfolio-spec.md` before making recommendations.
-- Clarify Mithun’s positioning as an AI/CS researcher, product builder, startup-oriented founder, and student leader.
+- Clarify Mithun’s positioning as an AI/Biomedical researcher, product builder, startup-oriented founder, and student leader.
 - Improve site structure and navigation.
 - Make the homepage narrative stronger.
 - Ensure the site serves SWE, AI/ML, and quant-tech recruiters.

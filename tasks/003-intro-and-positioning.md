@@ -1,7 +1,7 @@
 # Task 003: Intro and Positioning
 
 ## Goal
-Create a polished, recruiter-facing intro section that clearly positions Mithun Arun as an AI/CS researcher, product builder, startup-oriented founder, and student leader.
+Create a polished, recruiter-facing intro section that clearly positions Mithun Arun as an AI/Biomedical researcher, product builder, startup-oriented founder, and student leader.
 
 ## Context
 Before making changes, read:
