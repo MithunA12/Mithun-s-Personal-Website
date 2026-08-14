@@ -77,12 +77,11 @@ export interface NavigationItem {
 export const profile: Profile = {
   name: "Mithun Arun",
   role:
-    "AI/Biomedical researcher, product builder, and startup-oriented founder",
+    "",
   shortBio:
-    "AI/Biomedical researcher and software builder focused on intelligent systems for healthcare, education, and decision-making.",
+    "AI, Systems, and Biomedical researcher and software engineer focused on engineering impactful solutions for hard problems.",
   bio: [
-    "I am an AI/Biomedical researcher and software builder focused on applying intelligent systems to healthcare, education, and decision-making.",
-    "My work spans AI healthcare research using EEG and ECG data, mobile application development, and product-focused technical projects.",
+    "I build disruptive innovations across AI, Healthcare, Distributed Systems, and whatever else interests me.",
   ],
 };
 
@@ -118,7 +117,7 @@ export const projects: Project[] = [
     category: "Mobile product",
     description:
       "A social media app built with React Native, Expo, and Firebase.",
-    role: "Founder and developer",
+    role: "App Developer",
     stack: ["React Native", "Expo", "Firebase", "EAS", "Java"],
     impact: "Built and published as an iOS mobile app.",
     featured: true,

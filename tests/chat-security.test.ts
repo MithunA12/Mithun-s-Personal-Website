@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   getChatProviderFailure,
+  isSameOriginRequest,
   MAX_CHAT_HISTORY_ITEMS,
   MAX_CHAT_MESSAGE_LENGTH,
   validateChatPayload,
@@ -112,4 +113,33 @@ test("missing API key failures remain generic", () => {
   });
   assert.equal(failure.error.includes("key"), false);
   assert.equal(failure.error.includes("Gemini"), false);
+});
+
+function makeRequest(headers: Record<string, string>) {
+  return new Request("https://internal.example/api/contact", { method: "POST", headers });
+}
+
+test("same-origin: trusts Sec-Fetch-Site regardless of request.url host", () => {
+  // This is the Vercel fix: a genuine same-origin POST must pass even though
+  // request.url ("internal.example") differs from the public origin.
+  assert.equal(isSameOriginRequest(makeRequest({ "sec-fetch-site": "same-origin" })), true);
+  assert.equal(isSameOriginRequest(makeRequest({ "sec-fetch-site": "none" })), true);
+});
+
+test("same-origin: rejects cross-site and same-site fetches", () => {
+  assert.equal(isSameOriginRequest(makeRequest({ "sec-fetch-site": "cross-site" })), false);
+  assert.equal(isSameOriginRequest(makeRequest({ "sec-fetch-site": "same-site" })), false);
+});
+
+test("same-origin: without Sec-Fetch-Site, compares Origin to the forwarded host", () => {
+  assert.equal(
+    isSameOriginRequest(makeRequest({ origin: "https://site.com", "x-forwarded-host": "site.com" })),
+    true,
+  );
+  assert.equal(
+    isSameOriginRequest(makeRequest({ origin: "https://evil.com", "x-forwarded-host": "site.com" })),
+    false,
+  );
+  // No Origin header at all (e.g. a same-origin GET) is allowed.
+  assert.equal(isSameOriginRequest(makeRequest({})), true);
 });

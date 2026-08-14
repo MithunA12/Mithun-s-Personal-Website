@@ -99,11 +99,25 @@ export function validateChatPayload(body: unknown): ChatRequestValidation {
 }
 
 export function isSameOriginRequest(request: Request) {
+  // Prefer the Fetch Metadata signal: every modern browser sends Sec-Fetch-Site,
+  // and it is the reliable same-origin indicator. Crucially this avoids parsing
+  // request.url, which behind a proxy (e.g. Vercel) does not reflect the public
+  // origin and previously caused legitimate same-origin POSTs to be rejected.
   const fetchSite = request.headers.get("sec-fetch-site");
-  if (fetchSite && fetchSite !== "same-origin" && fetchSite !== "none") {
-    return false;
+  if (fetchSite) {
+    return fetchSite === "same-origin" || fetchSite === "none";
   }
 
+  // Fallback for clients that don't send Sec-Fetch-Site: compare the Origin's
+  // host to the request host, using the proxy-forwarded host when present.
   const origin = request.headers.get("origin");
-  return !origin || origin === new URL(request.url).origin;
+  if (!origin) return true;
+
+  const host =
+    request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  try {
+    return Boolean(host) && new URL(origin).host === host;
+  } catch {
+    return false;
+  }
 }

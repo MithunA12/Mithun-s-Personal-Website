@@ -89,7 +89,7 @@ export function Hero() {
               id="credibility-heading"
               className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]"
             >
-              Selected proof
+              
             </p>
             <StaggeredReveal
               as="dl"

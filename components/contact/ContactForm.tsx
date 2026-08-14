@@ -83,6 +83,8 @@ export function ContactForm() {
             <label htmlFor="contact-website">Leave this field empty</label>
             <input
               autoComplete="off"
+              data-1p-ignore
+              data-lpignore="true"
               id="contact-website"
               name="website"
               onChange={(event) => setWebsite(event.target.value)}
