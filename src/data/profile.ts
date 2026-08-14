@@ -114,7 +114,7 @@ export const projects: Project[] = [
   {
     title: "Worldview",
     slug: "worldview",
-    category: "Mobile product",
+    category: "Mobile App",
     description:
       "A social media app built with React Native, Expo, and Firebase.",
     role: "App Developer",
@@ -125,12 +125,24 @@ export const projects: Project[] = [
   {
     title: "NeuroHero Web App",
     slug: "neurohero-web-app",
-    category: "AI healthcare",
+    category: "AI Healthcare Research",
     description:
       "A research-to-product interface for working with EEG and ECG model inputs to prognosticate post-anoxic comas.",
     role: "Researcher and developer",
     stack: ["Python", "TensorFlow", "Flask", "React", "Firebase"],
     impact: "Increasing access to tools that aid physicians with coma prognostication post-cardiac arrest.",
+    featured: true,
+  },
+  {
+    title: "Sleep Phenomics Automation",
+    slug: "sleep-phenomics-automation",
+    category: "AI Healthcare Research",
+    description:
+      "Software that automates sleep-signal visualization, annotation, and feature computation so sleep phenomics can be used without a computational background.",
+    role: "Researcher and developer",
+    stack: ["React", "Signal Processing", "Machine Learning"],
+    impact:
+      "Made state-of-the-art sleep phenomics accessible to clinicians and researchers without a computational background.",
     featured: true,
   },
 ];

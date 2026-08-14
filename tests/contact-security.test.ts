@@ -12,7 +12,7 @@ test("accepts a well-formed message", () => {
     name: "Ada Lovelace",
     email: "ada@example.com",
     message: "I'd love to talk about your research.",
-    website: "",
+    hp: "",
   });
 
   assert.equal(result.ok, true);
@@ -27,7 +27,7 @@ test("rejects a filled honeypot as forbidden", () => {
     name: "Bot",
     email: "bot@example.com",
     message: "spam",
-    website: "http://spam.example",
+    hp: "http://spam.example",
   });
 
   assert.equal(result.ok, false);

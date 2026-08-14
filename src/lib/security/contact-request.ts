@@ -40,11 +40,13 @@ export function validateContactPayload(body: unknown): ContactRequestValidation 
     return { ok: false, error: "A name, email, and message are required.", status: 400 };
   }
 
-  // Honeypot: real users never see or fill this field.
-  if (typeof body.website === "string" && body.website.trim()) {
+  // Honeypot: real users never see or fill this field. Named non-semantically
+  // ("hp") so browser/password-manager autofill won't populate it and wrongly
+  // trip this check.
+  if (typeof body.hp === "string" && body.hp.trim()) {
     return { ok: false, error: "The request could not be accepted.", status: 403 };
   }
-  if (body.website !== undefined && typeof body.website !== "string") {
+  if (body.hp !== undefined && typeof body.hp !== "string") {
     return { ok: false, error: "The request could not be accepted.", status: 400 };
   }
 

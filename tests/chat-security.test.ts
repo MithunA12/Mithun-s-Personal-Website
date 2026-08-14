@@ -18,7 +18,7 @@ test("accepts a bounded chat payload", () => {
   const result = validateChatPayload({
     history: [{ role: "user", content: "What research is featured?" }],
     message: "What projects show software engineering ability?",
-    website: "",
+    hp: "",
   });
 
   assert.equal(result.ok, true);
@@ -39,7 +39,7 @@ test("rejects oversized messages and histories", () => {
 });
 
 test("rejects a filled honeypot", () => {
-  const result = validateChatPayload({ message: "hello", website: "bot.example" });
+  const result = validateChatPayload({ message: "hello", hp: "bot.example" });
   assert.deepEqual(result, {
     ok: false,
     error: "The request could not be accepted.",

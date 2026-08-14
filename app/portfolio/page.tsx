@@ -10,7 +10,7 @@ import { projects } from "@/src/data/profile";
 export const metadata: Metadata = {
   title: "Portfolio | Mithun Arun",
   description:
-    "Mithun Arun's research and engineering work — AI healthcare research alongside shipped software and product projects.",
+    "Mithun Arun's research and engineering work.",
 };
 
 export default function PortfolioPage() {
@@ -19,15 +19,15 @@ export default function PortfolioPage() {
       <PageHero
         eyebrow="Portfolio"
         title="Research and engineering, end to end."
-        description="AI healthcare research paired with the software and product work that turns it into usable systems — spanning signal processing, model development, mobile apps, and full-stack interfaces."
+        description="AI healthcare and systems research designed to improve healthcare equity."
         aside={<NeuralSignalVisual />}
       />
       <Research />
       <StickyStorySection
         id="projects"
-        description="Mobile, full-stack, and research-to-product engineering. Filter by technical domain."
+        description="Mobile, full-stack, and research-to-tool engineering. Filter by technical domain."
         eyebrow="Projects"
-        title="Software built with research rigor and product intent."
+        title="Software built with research rigor and accessible intent."
       >
         <ProjectFilter projects={projects} />
       </StickyStorySection>

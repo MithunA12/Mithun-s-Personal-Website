@@ -13,7 +13,7 @@ export function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [website, setWebsite] = useState(""); // honeypot
+  const [hp, setHp] = useState(""); // honeypot — non-semantic name to dodge autofill
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -28,7 +28,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, website }),
+        body: JSON.stringify({ name, email, message, hp }),
       });
       const data = (await response.json()) as ContactResponse;
 
@@ -78,18 +78,19 @@ export function ContactForm() {
         </div>
       ) : (
         <div className="grid gap-5">
-          {/* Honeypot: hidden from users, bots tend to fill it. */}
+          {/* Honeypot: hidden from users, bots tend to fill it. Non-semantic
+              name + ignore hints so autofill/password managers leave it alone. */}
           <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-            <label htmlFor="contact-website">Leave this field empty</label>
+            <label htmlFor="contact-hp">Leave this field empty</label>
             <input
               autoComplete="off"
               data-1p-ignore
               data-lpignore="true"
-              id="contact-website"
-              name="website"
-              onChange={(event) => setWebsite(event.target.value)}
+              id="contact-hp"
+              name="hp"
+              onChange={(event) => setHp(event.target.value)}
               tabIndex={-1}
-              value={website}
+              value={hp}
             />
           </div>
 

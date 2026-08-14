@@ -13,9 +13,8 @@ import {
 } from "@/src/data/profile";
 
 const featuredResearch = research.find((item) => item.featured);
-const founderProject = projects.find((project) =>
-  project.role.toLowerCase().includes("founder"),
-);
+const featuredProject =
+  projects.find((project) => project.featured) ?? projects[0];
 const featuredAward = accomplishments.find(
   (accomplishment) => accomplishment.title === "Regeneron ISEF Finalist",
 );
@@ -27,8 +26,8 @@ const credibilitySignals = [
   },
   {
     label: "Projects",
-    value: founderProject
-      ? `${founderProject.title} · ${founderProject.role}`
+    value: featuredProject
+      ? `${featuredProject.title} · ${featuredProject.role}`
       : undefined,
   },
   {

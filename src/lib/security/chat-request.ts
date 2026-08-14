@@ -61,11 +61,11 @@ export function validateChatPayload(body: unknown): ChatRequestValidation {
     return { ok: false, error: "A message is required.", status: 400 };
   }
 
-  if (typeof body.website === "string" && body.website.trim()) {
+  if (typeof body.hp === "string" && body.hp.trim()) {
     return { ok: false, error: "The request could not be accepted.", status: 403 };
   }
 
-  if (body.website !== undefined && typeof body.website !== "string") {
+  if (body.hp !== undefined && typeof body.hp !== "string") {
     return { ok: false, error: "The request could not be accepted.", status: 400 };
   }
 

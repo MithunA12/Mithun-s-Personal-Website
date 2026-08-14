@@ -23,7 +23,7 @@ export function AskMithunChat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [website, setWebsite] = useState("");
+  const [hp, setHp] = useState(""); // honeypot — non-semantic name to dodge autofill
 
   async function askQuestion(question: string) {
     const message = question.trim();
@@ -39,7 +39,7 @@ export function AskMithunChat() {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, history: recentHistory, website }),
+        body: JSON.stringify({ message, history: recentHistory, hp }),
       });
       const data = (await response.json()) as ChatResponse;
 
@@ -164,15 +164,17 @@ export function AskMithunChat() {
             onSubmit={handleSubmit}
           >
             <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
-              <label htmlFor="ask-mithun-website">Website</label>
+              <label htmlFor="ask-mithun-hp">Leave this field empty</label>
               <input
                 autoComplete="off"
-                id="ask-mithun-website"
-                name="website"
-                onChange={(event) => setWebsite(event.target.value)}
+                data-1p-ignore
+                data-lpignore="true"
+                id="ask-mithun-hp"
+                name="hp"
+                onChange={(event) => setHp(event.target.value)}
                 tabIndex={-1}
                 type="text"
-                value={website}
+                value={hp}
               />
             </div>
             <label className="sr-only" htmlFor="ask-mithun-message">

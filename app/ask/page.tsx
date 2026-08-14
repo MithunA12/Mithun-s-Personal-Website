@@ -14,7 +14,7 @@ export default function AskPage() {
   return (
     <PageShell>
       <PageHero
-        description="A portfolio-grounded guide to Mithun's AI research, software projects, and product work."
+        description="A portfolio-grounded guide to Mithun's AI research and software projects."
         eyebrow="Portfolio assistant"
         title="Ask Mithun"
       />
