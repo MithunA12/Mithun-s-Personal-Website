@@ -8,7 +8,7 @@ export function Research() {
   return (
     <StickyStorySection
       id="research"
-      description="Work across signal processing, clinical data analysis, model evaluation, and scientific communication."
+      description="Work across AI, healthcare, signal processing, clinical data analysis, model evaluation, and scientific communication."
       eyebrow="Research"
       title="Applying machine learning to complex healthcare data."
     >

@@ -48,13 +48,13 @@ export interface ResearchItem {
 
 export interface Accomplishment {
   title: string;
-  category: "Research" | "Award" | "Project" | "Leadership";
+  category: "Research" | "Award" | "Project";
 }
 
 export interface Experience {
   title: string;
   organization: string;
-  category: "Research" | "Project" | "Leadership" | "Communication";
+  category: "Research" | "Project";
   summary: string;
 }
 
@@ -77,12 +77,12 @@ export interface NavigationItem {
 export const profile: Profile = {
   name: "Mithun Arun",
   role:
-    "AI/Biomedical researcher, product builder, startup-oriented founder, and student leader",
+    "AI/Biomedical researcher, product builder, and startup-oriented founder",
   shortBio:
-    "AI/Biomedical researcher, software builder, and student leader focused on intelligent systems for healthcare, education, and decision-making.",
+    "AI/Biomedical researcher and software builder focused on intelligent systems for healthcare, education, and decision-making.",
   bio: [
-    "I am an AI/Biomedical researcher, software builder, and student leader focused on applying intelligent systems to healthcare, education, and decision-making.",
-    "My work spans AI healthcare research using EEG and ECG data, mobile application development, hackathon leadership, and product-focused technical projects.",
+    "I am an AI/Biomedical researcher and software builder focused on applying intelligent systems to healthcare, education, and decision-making.",
+    "My work spans AI healthcare research using EEG and ECG data, mobile application development, and product-focused technical projects.",
   ],
 };
 
@@ -91,22 +91,20 @@ export const hero: HeroContent = {
   headline:
     "Disrupting industries with interesting tech.",
   description:
-    "I build intelligent systems for healthcare, learning, and human decision-making through machine learning, software engineering, signal processing, and product design.",
+    "I build interesting tools to solve hard problems.",
   focusAreas: ["AI/ML", "Software Engineering", "Research", "Distributed Systems"],
   primaryCta: {
-    label: "View projects",
-    href: "/projects",
+    label: "View portfolio",
+    href: "/portfolio",
   },
   secondaryCta: {
     label: "View research",
-    href: "/research",
+    href: "/portfolio#research",
   },
 };
 
 export const navigation: NavigationItem[] = [
-  { label: "Projects", href: "/projects" },
-  { label: "Research", href: "/research" },
-  { label: "Experience", href: "/experience" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Accomplishments", href: "/accomplishments" },
   { label: "Values", href: "/values" },
   { label: "Ask Mithun", href: "/ask" },
@@ -121,7 +119,7 @@ export const projects: Project[] = [
     description:
       "A social media app built with React Native, Expo, and Firebase.",
     role: "Founder and developer",
-    stack: ["React Native", "Expo", "Firebase"],
+    stack: ["React Native", "Expo", "Firebase", "EAS", "Java"],
     impact: "Built and published as an iOS mobile app.",
     featured: true,
   },
@@ -132,8 +130,8 @@ export const projects: Project[] = [
     description:
       "A research-to-product interface for working with EEG and ECG model inputs to prognosticate post-anoxic comas.",
     role: "Researcher and developer",
-    stack: ["Python", "TensorFlow", "Flask", "React"],
-    impact: "Translated an AI healthcare research workflow into a usable interface.",
+    stack: ["Python", "TensorFlow", "Flask", "React", "Firebase"],
+    impact: "Increasing access to tools that aid physicians with coma prognostication post-cardiac arrest.",
     featured: true,
   },
 ];
@@ -152,64 +150,47 @@ export const research: ResearchItem[] = [
       "Feature Extraction",
       "Neural Network Training",
       "Model Evaluation",
+      "Flask",
+      "React",
     ],
-    publicationStatus: "Published and presented research",
+    publicationStatus: "Published and Presented Research",
     featured: true,
   },
   {
-    title: "Sleep phenomics research",
+    title: "Sleep Phenomics Automation",
     slug: "sleep-phenomics",
     field: "Sleep research",
     summary:
-      "Published work connecting computational analysis with sleep-related research and scientific communication.",
+      "Published work automating sleep signal visualization, annotation, and feature computation, increasing computational accessibility for clinicians and researchers.",
     significance:
-      "Demonstrates experience translating computational analysis into published scientific communication.",
-    methods: ["Clinical data analysis", "Scientific communication"],
-    publicationStatus: "Published research",
+      "Clinicians and researchers without computational backgrounds can access state-of-the-art sleep phenomics, improving sleep medicine, accelerating discovery, and training the next generation of providers.",
+    methods: ["ML", "Signal Processing", "Scientific Communication", "React"],
+    publicationStatus: "Published and Presented Research",
     featured: false,
   },
 ];
 
 export const accomplishments: Accomplishment[] = [
-  { title: "Published AI healthcare research", category: "Research" },
+  { title: "3x Published AI Healthcare Researcher", category: "Research" },
   { title: "Regeneron ISEF Finalist", category: "Award" },
-  { title: "Rise Global Winner", category: "Award" },
+  { title: "Rise Global Fellow", category: "Award" },
   { title: "Congressional App Challenge Winner", category: "Award" },
-  {
-    title: "Hackathon and student organization leadership",
-    category: "Leadership",
-  },
-  { title: "Debate and Model UN leadership", category: "Leadership" },
 ];
 
 export const experiences: Experience[] = [
   {
-    title: "AI healthcare researcher",
-    organization: "Independent and mentored research",
+    title: "AI, Systems, and Healthcare Researcher",
+    organization: "Independent and Mentored Research",
     category: "Research",
     summary:
-      "Developed and communicated research involving EEG, ECG, signal processing, and model evaluation.",
+      "Built signal processing and machine learning pipelines that extract clinically meaningful phenotypes from EEG and ECG, rigorously evaluated them, and delivered the work to clinicians through publications, conference talks, and open tooling.",
   },
   {
-    title: "Founder and mobile app developer",
+    title: "Mobile App Developer",
     organization: "Worldview",
     category: "Project",
     summary:
-      "Built a mobile social product using React Native, Expo, and Firebase.",
-  },
-  {
-    title: "Founder and president",
-    organization: "Fremd Hacks",
-    category: "Leadership",
-    summary:
-      "Led a student hackathon community focused on building technology for social impact.",
-  },
-  {
-    title: "Student leader",
-    organization: "Debate and Model UN",
-    category: "Communication",
-    summary:
-      "Developed public speaking, structured reasoning, and team leadership skills.",
+      "Built a social media app for political discourse using React Native, Expo, and Firebase.",
   },
 ];
 
@@ -217,23 +198,28 @@ export const coreValues: CoreValue[] = [
   {
     title: "Build with purpose",
     description:
-      "Start with meaningful problems and turn ideas into useful, testable products.",
+      "I start with meaningful problems and incrementally solve them.",
   },
   {
-    title: "Work with rigor",
+    title: "Breathe the work",
     description:
-      "Treat evidence, uncertainty, and technical tradeoffs with care.",
+      "I work on what I love.",
   },
   {
-    title: "Communicate clearly",
+    title: "Stay Curious",
     description:
-      "Make complex systems understandable to technical and nontechnical audiences.",
+      "I ask a lot of questions.",
   },
 ];
 
+// Note: email is intentionally NOT listed here. It is never sent to the client
+// (which would let bots harvest it). Messages route through the /contact form to
+// a server-only CONTACT_EMAIL env var instead. Only public profile links belong here.
 export const contactLinks: ContactLink[] = [
-  { label: "Email", verificationStatus: "needs-verification" },
-  { label: "GitHub", verificationStatus: "needs-verification" },
-  { label: "LinkedIn", verificationStatus: "needs-verification" },
-  { label: "Resume", verificationStatus: "needs-verification" },
+  {
+    label: "GitHub",
+    href: "https://github.com/MithunA12",
+    verificationStatus: "verified",
+  },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mithun-arun-14384622a/", verificationStatus: "verified" },
 ];

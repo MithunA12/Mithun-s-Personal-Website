@@ -7,14 +7,14 @@ import { PageHero } from "@/components/ui/PageHero";
 export const metadata: Metadata = {
   title: "Ask Mithun",
   description:
-    "Ask a portfolio-grounded AI assistant about Mithun Arun's research, projects, experience, and leadership.",
+    "Ask a portfolio-grounded AI assistant about Mithun Arun's research, projects, and technical experience.",
 };
 
 export default function AskPage() {
   return (
     <PageShell>
       <PageHero
-        description="A portfolio-grounded guide to Mithun's AI research, software projects, product work, and leadership experience."
+        description="A portfolio-grounded guide to Mithun's AI research, software projects, and product work."
         eyebrow="Portfolio assistant"
         title="Ask Mithun"
       />

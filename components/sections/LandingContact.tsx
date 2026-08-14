@@ -9,10 +9,10 @@ export function LandingContact() {
         <SectionHeader
           description="Explore the evidence behind the work or open the contact page for verified ways to connect."
           eyebrow="Next step"
-          title="Looking for an AI researcher who also ships products?"
+          title="Looking for an AI researcher who builds interesting things?"
         />
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/projects">View projects</ButtonLink>
+          <ButtonLink href="/portfolio">View portfolio</ButtonLink>
           <ButtonLink href="/contact" variant="secondary">Contact</ButtonLink>
         </div>
       </div>

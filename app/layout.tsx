@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   category: "technology",
   creator: profile.name,
   description:
-    "Portfolio of Mithun Arun, an AI/Biomedical researcher and product builder with published healthcare AI work, software projects, and student leadership experience.",
+    "Portfolio of Mithun Arun, an AI/Biomedical researcher and product builder with published healthcare AI work and shipped software projects.",
   keywords: [
     "Mithun Arun",
     "AI researcher",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     description:
-      "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
+      "Published healthcare AI research, software projects, and product building from Mithun Arun.",
     locale: "en_US",
     siteName: `${profile.name} Portfolio`,
     title: `${profile.name} | AI Researcher and Product Builder`,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     description:
-      "Published healthcare AI research, software projects, product building, and student leadership from Mithun Arun.",
+      "Published healthcare AI research, software projects, and product building from Mithun Arun.",
     title: `${profile.name} | AI Researcher and Product Builder`,
   },
 };

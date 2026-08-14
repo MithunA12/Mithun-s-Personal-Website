@@ -10,20 +10,20 @@ const highlights = [
     eyebrow: "Featured project",
     title: projects[0]?.title,
     description: projects[0]?.impact ?? projects[0]?.description,
-    href: "/projects",
-    cta: "Explore projects",
+    href: "/portfolio",
+    cta: "Explore the portfolio",
   },
   {
     eyebrow: "Research",
     title: research[0]?.title,
     description: research[0]?.significance,
-    href: "/research",
+    href: "/portfolio#research",
     cta: "View research",
   },
   {
     eyebrow: "Recognition",
     title: accomplishments[1]?.title,
-    description: "Selected recognition across research, technology, and leadership.",
+    description: "Selected recognition across research and technology",
     href: "/accomplishments",
     cta: "See accomplishments",
   },
@@ -43,12 +43,12 @@ export function HomeHighlights() {
     <Section tone="surface">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <SectionHeader
-          description="A fast path into the work, evidence, and principles behind the portfolio."
-          eyebrow="Selected highlights"
-          title="Research depth, product execution, and leadership in one trajectory."
+          description=""
+          eyebrow=""
+          title="Some interesting things about me."
         />
-        <ButtonLink className="shrink-0" href="/experience" variant="secondary">
-          View experience
+        <ButtonLink className="shrink-0" href="/portfolio" variant="secondary">
+          View portfolio
         </ButtonLink>
       </div>
 

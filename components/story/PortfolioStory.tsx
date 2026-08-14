@@ -14,18 +14,14 @@ import { StorySceneLayer } from "@/components/story/StorySceneLayer";
 import { coverageIndex } from "@/components/story/sceneTransforms";
 import {
   coreValues,
-  experiences,
   profile,
   projects,
   research,
 } from "@/src/data/profile";
 
 const featuredResearch = research.find((item) => item.featured) ?? research[0];
-const leadership = experiences.filter(
-  (item) => item.category === "Leadership" || item.category === "Communication",
-);
 
-const sceneNames = ["Research", "Projects", "Leadership", "Values"];
+const sceneNames = ["Research", "Projects", "Values"];
 const total = sceneNames.length;
 
 const storyTagClasses =
@@ -71,7 +67,7 @@ export function PortfolioStory() {
         eyebrow={sceneNames[0]}
         headline={
           featuredResearch?.title ??
-          "AI healthcare research grounded in complex signals."
+          "AI healthcare research to improve healthcare equity."
         }
         index={0}
         progress={scrollYProgress}
@@ -104,12 +100,12 @@ export function PortfolioStory() {
       <StorySceneLayer
         active={active}
         animated={animated}
-        description="Products and technical systems that translate ideas and research workflows into usable software."
+        description="Products and technical systems that translate novel ideas and research workflows into usable software."
         eyebrow={sceneNames[1]}
-        headline="Research thinking meets product execution."
+        headline="Research thinking meets accessible healthcare."
         index={1}
         progress={scrollYProgress}
-        supporting={<ButtonLink href="/projects">Explore all projects</ButtonLink>}
+        supporting={<ButtonLink href="/portfolio">Explore the portfolio</ButtonLink>}
         total={total}
       >
         <div className="grid gap-4 sm:grid-cols-2">
@@ -141,46 +137,10 @@ export function PortfolioStory() {
       <StorySceneLayer
         active={active}
         animated={animated}
-        description="Technical work is paired with community building, structured communication, and student-led initiatives."
+        description="Purpose, technical rigor, and innovation connect the research and products throughout the portfolio."
         eyebrow={sceneNames[2]}
-        headline="Leadership that turns individual work into shared momentum."
-        index={2}
-        progress={scrollYProgress}
-        supporting={
-          <ButtonLink href="/experience" variant="secondary">
-            View experience
-          </ButtonLink>
-        }
-        total={total}
-      >
-        <div className="space-y-4">
-          {leadership.map((item, index) => (
-            <article
-              className="grid gap-4 rounded-2xl border border-white/15 bg-white/[0.06] p-6 backdrop-blur sm:grid-cols-[auto_1fr] sm:items-start"
-              key={`${item.organization}-${item.title}`}
-            >
-              <span className="font-mono text-sm font-semibold text-blue-300">
-                0{index + 1}
-              </span>
-              <div>
-                <p className="text-sm font-medium text-slate-400">
-                  {item.organization}
-                </p>
-                <h3 className="mt-1 text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{item.summary}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </StorySceneLayer>
-
-      <StorySceneLayer
-        active={active}
-        animated={animated}
-        description="Purpose, rigor, and clear communication connect the research, products, and leadership throughout the portfolio."
-        eyebrow={sceneNames[3]}
         headline="Build useful systems. Evaluate them carefully. Explain them clearly."
-        index={3}
+        index={2}
         progress={scrollYProgress}
         supporting={
           <div className="flex flex-col gap-3 sm:flex-row">

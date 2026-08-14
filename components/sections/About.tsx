@@ -8,7 +8,7 @@ export function About() {
       <div className="grid gap-8 md:grid-cols-[1fr_1.5fr] md:gap-12">
         <SectionHeader
           eyebrow="About"
-          title="Research depth, product execution, and clear communication."
+          title="Some interesting things about me."
         />
         <div className="space-y-5 text-lg leading-8 text-[var(--muted)]">
           {profile.bio.map((paragraph) => (

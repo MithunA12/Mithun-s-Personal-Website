@@ -84,8 +84,8 @@ export function AskMithunChat() {
             Explore the portfolio conversationally.
           </h2>
           <p className="mt-4 leading-7 text-[var(--muted)]">
-            Ask about Mithun&apos;s projects, research, technical experience, or
-            leadership. Answers are grounded in the content published on this
+            Ask about Mithun&apos;s projects, research, and technical
+            experience. Answers are grounded in the content published on this
             site.
           </p>
 

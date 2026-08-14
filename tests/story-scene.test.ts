@@ -7,7 +7,7 @@ import {
   sceneReveal,
 } from "../components/story/sceneTransforms";
 
-const TOTAL = 4; // Research, Projects, Leadership, Values
+const TOTAL = 3; // Research, Projects, Values
 
 function opacityAt(index: number, progress: number): number {
   const { input, opacity } = sceneReveal(index, TOTAL);

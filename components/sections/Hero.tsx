@@ -6,7 +6,6 @@ import { Tag } from "@/components/ui/Tag";
 import { NeuralSignalVisual } from "@/components/visuals/NeuralSignalVisual";
 import {
   accomplishments,
-  experiences,
   hero,
   profile,
   projects,
@@ -16,9 +15,6 @@ import {
 const featuredResearch = research.find((item) => item.featured);
 const founderProject = projects.find((project) =>
   project.role.toLowerCase().includes("founder"),
-);
-const leadershipExperience = experiences.find(
-  (experience) => experience.category === "Leadership",
 );
 const featuredAward = accomplishments.find(
   (accomplishment) => accomplishment.title === "Regeneron ISEF Finalist",
@@ -33,12 +29,6 @@ const credibilitySignals = [
     label: "Projects",
     value: founderProject
       ? `${founderProject.title} · ${founderProject.role}`
-      : undefined,
-  },
-  {
-    label: "Leadership",
-    value: leadershipExperience
-      ? `${leadershipExperience.organization} · ${leadershipExperience.title}`
       : undefined,
   },
   {

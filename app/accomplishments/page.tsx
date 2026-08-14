@@ -6,7 +6,7 @@ import { accomplishments } from "@/src/data/profile";
 
 export const metadata: Metadata = {
   title: "Accomplishments | Mithun Arun",
-  description: "Selected research, technology, award, and leadership recognition earned by Mithun Arun.",
+  description: "Selected research, technology, and accomplishments.",
 };
 
 export default function AccomplishmentsPage() {
@@ -16,8 +16,8 @@ export default function AccomplishmentsPage() {
     <PageShell>
       <PageHero
         eyebrow="Accomplishments"
-        title="Credible recognition across research, technology, and leadership."
-        description="A concise record of publications, honors, project recognition, and community leadership."
+        title="Credible recognition across research and technology."
+        description="A concise record of publications, honors, and project recognition."
         aside={<p className="font-mono text-sm leading-7 text-[var(--muted)]">{accomplishments.length} selected milestones<br />{categories} areas of recognition</p>}
       />
       <Accomplishments />

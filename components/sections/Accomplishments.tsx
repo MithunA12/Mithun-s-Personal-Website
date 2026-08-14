@@ -6,9 +6,9 @@ export function Accomplishments() {
   return (
     <StickyStorySection
       id="accomplishments"
-      description="Selected awards, research milestones, and leadership distinctions."
+      description="Selected awards and research milestones."
       eyebrow="Accomplishments"
-      title="Recognition across research, technology, and leadership."
+      title="Recognition across research and technology."
       tone="dark"
     >
       <StaggeredReveal as="ul" className="grid gap-3 sm:grid-cols-2">

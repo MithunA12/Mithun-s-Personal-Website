@@ -1,38 +1,46 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
-import { CoreValues } from "@/components/sections/CoreValues";
-import { PageHero } from "@/components/ui/PageHero";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { MotionReveal } from "@/components/ui/MotionReveal";
+import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
 import { StaggeredReveal } from "@/components/ui/StaggeredReveal";
-import { experiences } from "@/src/data/profile";
+import { coreValues } from "@/src/data/profile";
 
 export const metadata: Metadata = {
   title: "Values | Mithun Arun",
-  description: "The principles that guide Mithun Arun's research, product building, and leadership.",
+  description: "The principles that guide Mithun Arun's research and product building.",
 };
 
 export default function ValuesPage() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="Values"
-        title="Build with purpose. Work with rigor. Communicate clearly."
-        description="Principles that connect technical decisions to useful outcomes, careful evidence, and understandable communication."
-      />
-      <CoreValues />
-      <Section>
-        <SectionHeader eyebrow="Values in practice" title="Principles reflected in the work." />
-        <StaggeredReveal className="mt-10 grid gap-4 md:grid-cols-3">
-          {experiences.slice(0, 3).map((experience) => (
-            <article className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6" key={experience.title}>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">{experience.category}</p>
-              <h3 className="mt-3 text-xl font-semibold">{experience.organization}</h3>
-              <p className="mt-3 leading-7 text-[var(--muted)]">{experience.summary}</p>
-            </article>
-          ))}
-        </StaggeredReveal>
-      </Section>
+      <section className="liquid-backdrop relative overflow-hidden border-b border-[var(--border)] px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <ParallaxLayer
+          className="pointer-events-none absolute inset-x-0 -top-12 h-[120%]"
+          distance={24}
+        >
+          <div aria-hidden="true" className="page-grid h-full opacity-50" />
+        </ParallaxLayer>
+        <MotionReveal className="glass-panel relative mx-auto max-w-6xl rounded-[2rem] p-7 sm:p-10 lg:p-12">
+          <h1 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+            Values
+          </h1>
+          <StaggeredReveal className="mt-8 grid gap-8 sm:mt-10 sm:gap-10 lg:grid-cols-3">
+            {coreValues.map((value, index) => (
+              <div key={value.title}>
+                <p className="font-mono text-xs font-semibold text-[var(--accent)]">
+                  0{index + 1}
+                </p>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {value.title}
+                </h2>
+                <p className="mt-3 leading-8 text-[var(--muted)]">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </StaggeredReveal>
+        </MotionReveal>
+      </section>
     </PageShell>
   );
 }

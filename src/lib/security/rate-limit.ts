@@ -128,8 +128,15 @@ async function checkUpstashRateLimit(
 }
 
 export async function checkRateLimit(options: RateLimitOptions): Promise<RateLimitResult> {
-  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+  // Accept either the Upstash-native names or the Vercel-KV-style names that
+  // the Vercel Redis integration injects. Note: REDIS_URL (a redis:// TCP
+  // connection string) is NOT usable here — this client speaks the HTTP REST API.
+  const url = (
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
+  )?.trim();
+  const token = (
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
+  )?.trim();
 
   if (url && token) {
     try {

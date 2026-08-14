@@ -16,6 +16,13 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: "/projects", destination: "/portfolio", permanent: true },
+      { source: "/research", destination: "/portfolio", permanent: true },
+      { source: "/experience", destination: "/portfolio", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
