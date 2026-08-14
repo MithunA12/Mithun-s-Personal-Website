@@ -106,7 +106,7 @@ export const navigation: NavigationItem[] = [
   { label: "Portfolio", href: "/portfolio" },
   { label: "Accomplishments", href: "/accomplishments" },
   { label: "Values", href: "/values" },
-  { label: "Ask Mithun", href: "/ask" },
+  { label: "Ask AI", href: "/ask" },
   { label: "Contact", href: "/contact" },
 ];
 
