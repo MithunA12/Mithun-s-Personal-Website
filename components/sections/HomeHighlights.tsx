@@ -14,6 +14,13 @@ const highlights = [
     cta: "Explore the portfolio",
   },
   {
+    eyebrow: "Featured project",
+    title: projects[1]?.title,
+    description: projects[1]?.impact ?? projects[1]?.description,
+    href: "/portfolio",
+    cta: "View the project",
+  },
+  {
     eyebrow: "Research",
     title: research[0]?.title,
     description: research[0]?.significance,
@@ -54,7 +61,7 @@ export function HomeHighlights() {
 
       <StaggeredReveal className="mt-10 grid gap-5 md:grid-cols-2">
         {highlights.map((item) => (
-          <div className="h-full" key={item.href}>
+          <div className="h-full" key={item.title}>
             <Card className="flex h-full flex-col" polished>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                 {item.eyebrow}
