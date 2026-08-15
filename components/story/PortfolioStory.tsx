@@ -108,20 +108,22 @@ export function PortfolioStory() {
         supporting={<ButtonLink href="/portfolio">Explore the portfolio</ButtonLink>}
         total={total}
       >
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           {projects.map((project) => (
             <article
-              className="rounded-2xl border border-white/15 bg-white/[0.07] p-6 shadow-xl shadow-black/15 backdrop-blur transition-transform duration-300 motion-safe:hover:-translate-y-1 sm:odd:last:col-span-2 sm:odd:last:mx-auto sm:odd:last:w-full sm:odd:last:max-w-[calc(50%-0.5rem)]"
+              className="rounded-2xl border border-white/15 bg-white/[0.07] p-5 shadow-xl shadow-black/15 backdrop-blur transition-transform duration-300 motion-safe:hover:-translate-y-1 sm:odd:last:col-span-2 sm:odd:last:mx-auto sm:odd:last:w-full sm:odd:last:max-w-[calc(50%-0.375rem)]"
               key={project.slug}
             >
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-blue-300">
                 {project.category}
               </p>
-              <h3 className="mt-3 text-2xl font-semibold">{project.title}</h3>
-              <p className="mt-3 leading-7 text-slate-300">{project.description}</p>
+              <h3 className="mt-2 text-lg font-semibold">{project.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                {project.description}
+              </p>
               <ul
                 aria-label={`${project.title} technologies`}
-                className="mt-5 flex flex-wrap gap-2"
+                className="mt-4 flex flex-wrap gap-1.5"
               >
                 {project.stack.map((technology) => (
                   <li className={storyTagClasses} key={technology}>
