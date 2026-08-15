@@ -46,6 +46,22 @@ export function Research() {
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">Why it matters</p>
               <p className="mt-2 leading-6">{item.significance}</p>
             </div>
+
+            {item.links?.length ? (
+              <div className="mt-auto flex flex-wrap gap-4 pt-6">
+                {item.links.map((link) => (
+                  <a
+                    className="font-semibold text-[var(--accent)] underline decoration-blue-200 underline-offset-4 transition-colors hover:text-[var(--accent-strong)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+                    href={link.href}
+                    key={link.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </Card>
         ))}
       </StaggeredReveal>

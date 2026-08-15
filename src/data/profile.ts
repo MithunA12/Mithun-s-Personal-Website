@@ -43,6 +43,10 @@ export interface ResearchItem {
   significance: string;
   methods: string[];
   publicationStatus: string;
+  links?: Array<{
+    label: string;
+    href: string;
+  }>;
   featured: boolean;
 }
 
@@ -131,6 +135,12 @@ export const projects: Project[] = [
     role: "Researcher and developer",
     stack: ["Python", "TensorFlow", "Flask", "React", "Firebase"],
     impact: "Increasing access to tools that aid physicians with coma prognostication post-cardiac arrest.",
+    links: [
+      {
+        label: "IEEE Xplore Paper",
+        href: "https://ieeexplore.ieee.org/document/10937579/",
+      },
+    ],
     featured: true,
   },
   {
@@ -143,6 +153,16 @@ export const projects: Project[] = [
     stack: ["React", "Signal Processing", "Machine Learning"],
     impact:
       "Made state-of-the-art sleep phenomics accessible to clinicians and researchers without a computational background.",
+    links: [
+      {
+        label: "Sleep Medicine Abstract",
+        href: "https://www.sciencedirect.com/science/article/pii/S1389945725022920",
+      },
+      {
+        label: "SLEEP Journal Abstract",
+        href: "https://academic.oup.com/sleep/article/48/Supplement_1/A203/8134881",
+      },
+    ],
     featured: true,
   },
 ];
@@ -165,6 +185,12 @@ export const research: ResearchItem[] = [
       "React",
     ],
     publicationStatus: "Published and Presented Research",
+    links: [
+      {
+        label: "IEEE Xplore Paper",
+        href: "https://ieeexplore.ieee.org/document/10937579/",
+      },
+    ],
     featured: true,
   },
   {
@@ -177,6 +203,16 @@ export const research: ResearchItem[] = [
       "Clinicians and researchers without computational backgrounds can access state-of-the-art sleep phenomics, improving sleep medicine, accelerating discovery, and training the next generation of providers.",
     methods: ["ML", "Signal Processing", "Scientific Communication", "React"],
     publicationStatus: "Published and Presented Research",
+    links: [
+      {
+        label: "Sleep Medicine Abstract",
+        href: "https://www.sciencedirect.com/science/article/pii/S1389945725022920",
+      },
+      {
+        label: "SLEEP Journal Abstract",
+        href: "https://academic.oup.com/sleep/article/48/Supplement_1/A203/8134881",
+      },
+    ],
     featured: false,
   },
 ];
