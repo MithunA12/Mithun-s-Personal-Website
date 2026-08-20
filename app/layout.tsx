@@ -26,19 +26,19 @@ export const metadata: Metadata = {
       "Published healthcare AI research, software projects, and product building from Mithun Arun.",
     locale: "en_US",
     siteName: `${profile.name} Portfolio`,
-    title: `${profile.name} | AI Researcher and Product Builder`,
+    title: `${profile.name} Portfolio`,
     type: "website",
   },
   robots: {
     follow: true,
     index: true,
   },
-  title: `${profile.name} | AI Researcher and Product Builder`,
+  title: `${profile.name} Portfolio`,
   twitter: {
     card: "summary",
     description:
       "Published healthcare AI research, software projects, and product building from Mithun Arun.",
-    title: `${profile.name} | AI Researcher and Product Builder`,
+    title: `${profile.name} Portfolio`,
   },
 };
 
