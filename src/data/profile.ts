@@ -76,6 +76,7 @@ export interface ContactLink {
 export interface NavigationItem {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 export const profile: Profile = {
@@ -112,6 +113,7 @@ export const navigation: NavigationItem[] = [
   { label: "Values", href: "/values" },
   { label: "Ask AI", href: "/ask" },
   { label: "Contact", href: "/contact" },
+  { label: "GitHub", href: "https://github.com/MithunA12", external: true },
 ];
 
 export const projects: Project[] = [
